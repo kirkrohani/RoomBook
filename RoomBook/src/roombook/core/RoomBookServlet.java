@@ -34,6 +34,12 @@ public class RoomBookServlet extends HttpServlet
 		System.out.println("Inside RoomBookServlet doPost");
 		
 		Hotel hotel = new Hotel();
+		
+		/*
+		 * The section below grabs hotel initialization parameters from another JSP file.
+		 * This section needs to be changed once we implement a DB
+		 * BEGIN
+		 */
 		String numberOfRooms = request.getParameter("numberOfRooms1");
 		System.out.println("# of ROOMS: " + numberOfRooms);
 		String bedType = request.getParameter("roomType1");
@@ -60,7 +66,11 @@ public class RoomBookServlet extends HttpServlet
     		guestRoom = new GuestRoom(numberOfBeds, BusinessLogic.getBedType(bedType));
     		hotel.addRoom(guestRoom);
     	}
-    	
+    	/*
+		 * The section below grabs hotel initialization parameters from another JSP file.
+		 * This section needs to be changed once we implement a DB
+		 * END
+		 */
     	System.out.println("HOTEL CREATED: " + hotel.getNumberOfRooms());
     	
 		
