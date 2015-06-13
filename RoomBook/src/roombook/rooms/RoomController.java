@@ -7,7 +7,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import java.util.List;
+
 import roombook.dao.GuestroomDAO;
 
 
@@ -42,6 +45,8 @@ public class RoomController extends HttpServlet {
 		for (Room r : guestrooms)
 			System.out.println("Room #" + r.getNumber() + " " + r.getDescription());
 		
+		HttpSession session = request.getSession();
+		session.setAttribute("rooms", guestrooms);
 		this.getServletContext().getRequestDispatcher(defaultURL).forward(request, response);
 	}
 
