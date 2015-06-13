@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="RoomBook" method="POST">
+<form action="Home" method="POST">
 <h4>Hotel Name:<span> <input type="text" title="hotelname" size="25"></span></h4> 
 <h4>Number of Rooms:<input type="text" name="numberOfRooms1" size="2">
 Room Type: <select name="roomType1">

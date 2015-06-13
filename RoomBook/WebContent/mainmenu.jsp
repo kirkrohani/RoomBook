@@ -17,30 +17,29 @@
                                 <!-- .mega-menu helper class ued as switcher -->
                                 <ul class="clean-list to-right">
                                     <!-- .to-right, to-left, .center-me helper class-->
-                                    <li class="current-menu-item"><a href="room-book.jsp">Home</a></li>
-                                    <li><a href="guests.jsp">Guests</a>
+                                    <li class="current-menu-item"><a href="Home">Home</a></li>
+                                    
+                                    <li><a href="Guests">Guests</a>
                                         <ul>
                                             <li><a href="gallery.html">Current Guests</a></li>
                                             <li><a href="restaurant.html">Previous Guests</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="guest-services.jsp">Guest Services</a>
+                                    <li><a href="GuestServices">Guest Services</a>
                                         <ul>
                                             <li><a href="room-preview.html">Check-In</a></li>
                                             <li><a href="booking-steps.html">Check-Out</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="view-reservations.jsp">Reservations</a>
+                                    <li><a href="Reservations">Reservations</a>
                                         <ul>
                                             <li><a href="make-reservation.jsp">Make Reservation</a></li>
                                             <li><a href="single-blog.html">Cancel Reservation</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="/rooms">Rooms</a>
+                                    <li><a href="Rooms">Rooms</a>
                                     	 <ul>
                                             <li><a href="room-status.jsp">Room Status</a></li>
-                                            <li><a href="blog-three-col.html">INSERT HERE</a></li>
-                                            <li><a href="single-blog.html">INSERT HERE</a></li>
                                         </ul>
                                     </li>
                                 </ul>

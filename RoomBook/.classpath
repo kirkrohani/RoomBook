@@ -6,8 +6,13 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="/Applications/apache-tomcat-8.0/lib/servlet-api.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JPALibs">
+		<attributes>
+			<attribute name="owner.project.facets" value="#system#;jpt.jpa"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.datatools.connectivity.jdt.DRIVERLIBRARY/MySQL JDBC Driver"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
