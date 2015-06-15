@@ -1,4 +1,4 @@
-package roombook.core;
+package roombook.rooms;
 
 public enum BedType 
 {

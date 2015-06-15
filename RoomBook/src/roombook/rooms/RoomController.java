@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import java.util.List;
 
+import roombook.core.BusinessLogic;
 import roombook.dao.GuestroomDAO;
 
 
@@ -38,16 +38,42 @@ public class RoomController extends HttpServlet {
 		System.out.println("Inside RoomController GET");
 		String defaultURL = "/rooms.jsp";
 		
-		
-		List<Guestroom> guestrooms = GuestroomDAO.getAllRooms();
-		System.out.println("How many rooms do we have? " + guestrooms.size());
-		
-		for (Room r : guestrooms)
-			System.out.println("Room #" + r.getNumber() + " " + r.getDescription());
-		
 		HttpSession session = request.getSession();
-		session.setAttribute("rooms", guestrooms);
-		this.getServletContext().getRequestDispatcher(defaultURL).forward(request, response);
+		
+		String pageController = request.getParameter("page");
+		
+		int pageNum = 1;
+		if (pageController != null)
+		{
+			if (pageController.equals("Next"))
+				pageNum = (int) session.getAttribute("currentPage") + 5;
+			else if (pageController.equals("Prev"))
+				pageNum = (int) session.getAttribute("currentPage") - 5;
+			else
+				pageNum = Integer.parseInt(pageController);
+				
+		}
+
+		request.setAttribute("pagingStart", BusinessLogic.getPagingStartingIndex(pageNum));
+		request.setAttribute("pagingEnd", BusinessLogic.getPagingEndingIndex(pageNum));
+		session.setAttribute("currentPage", pageNum);
+		
+		System.out.println("Page number: " + pageNum );
+		
+		/*
+		 * Check if we have already gotten all rooms and place into session
+		 */
+		if (request.getSession().getAttribute("rooms") == null)
+		{
+			System.out.println("Getting rooms");
+			List<Guestroom> guestrooms = GuestroomDAO.getAllRooms();
+			session.setAttribute("rooms", guestrooms);
+			System.out.println("TOTAL PAGES: " + BusinessLogic.getTotalNumberOfPages(guestrooms.size()));
+			session.setAttribute("totalPages", BusinessLogic.getTotalNumberOfPages(guestrooms.size()));
+		}
+		
+		
+		getServletContext().getRequestDispatcher(defaultURL).forward(request, response);
 	}
 
 	/**

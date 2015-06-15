@@ -24,7 +24,7 @@ public class RoomBookingEngineController extends HttpServlet
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		System.out.println("Inside RoomBookServlet doGet");
+		System.out.println("Inside RoomBookEngineController GET");
 		String defaultURL = "/room-book.jsp"; 
 		getServletContext().getRequestDispatcher(defaultURL).forward(request, response);
 	}
@@ -32,7 +32,7 @@ public class RoomBookingEngineController extends HttpServlet
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		System.out.println("Inside RoomBookServlet doPost");
+		System.out.println("Inside RoomBookEngineController POST");
 		
 		String defaultURL = "/room-book.jsp";
 		Hotel hotel = new Hotel();

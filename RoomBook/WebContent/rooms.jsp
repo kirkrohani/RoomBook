@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="tl" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,8 +44,8 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-8">
                             <ul class="inline-list uppercase font-small header-meta">
-                                <li><i class="icon-312 font-13x"></i> NY Wall street 25.5</li>
-                                <li><i class="icon-274 font-13x"></i> hotelia@gmail.com</li>
+                                <li><i class="icon-312 font-13x"></i> Dallas, Tx 75251 </li>
+                                <li><i class="icon-274 font-13x"></i> kirk.rohani@gmail.com </li>
                             </ul>
                         </div>
 
@@ -110,11 +111,13 @@
 						<br>
 					</div>
 				</div> <!-- /.row -->
-
-				<ul class="clean-list rooms-items row">
+				
+				
+				<ul class="clean-list rooms-items row">	
+				<tl:forEach items="${rooms}" var="room" begin="${pagingStart}" end="${pagingEnd}">
 					<li class="col-md-4 col-sm-6">
 						<div class="text-center">
-							<h3 class="text-dark-blue"><a href="room-details.jsp" class="text-dark-blue hover-text-aquablue">Standard Suite</a></h3>
+							<h3 class="text-dark-blue"><a href="room-details.jsp" class="text-dark-blue hover-text-aquablue">Room <tl:out value="${room.number}"> </tl:out>    <tl:out value="${room.type}" /></a></h3>
 							<figure>
 								<a href="http://placehold.it/600x600"  title="RoomBook rooms" rel="gallery-1"><img src="http://placehold.it/600x600" alt="portfolio item"></a>
 								<figcaption class="aquablue text-white">
@@ -130,254 +133,36 @@
 							</figure>
 							<div class="rooms-description">
 								<p>
-									Warm within me, that it might be the mirror of my soul, 
-									as my soul is the mirror <br> of the infinite God!
+									<tl:out value="${room.description }"></tl:out>
 								</p>
 								<div class="rooms-footer clearfix">
-									<span class="to-left align-button">Price: <b class="text-aquablue font-13x font-300">$120</b></span>
+									<span class="to-left align-button">Price: <b class="text-aquablue font-13x font-300">${room.price}</b></span>
 									<a href="?page=room-preview" class="button-sm to-right grey text-black hover-orange soft-corners">Book now</a>
 								</div>
 							</div>
 						</div>
 					</li>
-					<li class="col-md-4 col-sm-6">
-						<div class="text-center">
-							<h3 class="text-dark-blue"><a href="?page=room-preview" class="text-dark-blue hover-text-aquablue">Standard Suite</a></h3>
-							<figure>
-								<a href="http://placehold.it/600x600" class="zoom-image" title="Hotelia rooms" rel="gallery-1"><img src="http://placehold.it/600x600" alt="portfolio item"></a>
-								<figcaption class="aquablue text-white">
-									<ul class="inline-list center-me amenities">
-										<li><i class="icon-326 font-13x"></i></li>
-										<li><i class="icon-391 font-13x"></i></li>
-										<li><i class="icon-426 font-13x"></i></li>
-										<li><i class="icon-217 font-13x"></i></li>
-										<li><i class="icon-219 font-13x"></i></li>
-										<li><i class="icon-237 font-13x"></i></li>
-									</ul>
-								</figcaption>
-							</figure>
-							<div class="rooms-description">
-								<p>
-									Warm within me, that it might be the mirror of my soul, 
-									as my soul is the mirror <br> of the infinite God!
-								</p>
-								<div class="rooms-footer clearfix">
-									<span class="to-left align-button">Price: <b class="text-aquablue font-13x font-300">$120</b></span>
-									<a href="?page=room-preview" class="button-sm to-right grey text-black hover-orange soft-corners">Book now</a>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li class="col-md-4 col-sm-6">
-						<div class="text-center">
-							<h3 class="text-dark-blue"><a href="?page=room-preview" class="text-dark-blue hover-text-aquablue">Standard Suite</a></h3>
-							<figure>
-								<a href="http://placehold.it/600x600" class="zoom-image" title="Hotelia rooms" rel="gallery-1"><img src="http://placehold.it/600x600" alt="portfolio item"></a>
-								<figcaption class="aquablue text-white">
-									<ul class="inline-list center-me amenities">
-										<li><i class="icon-326 font-13x"></i></li>
-										<li><i class="icon-391 font-13x"></i></li>
-										<li><i class="icon-426 font-13x"></i></li>
-										<li><i class="icon-217 font-13x"></i></li>
-										<li><i class="icon-219 font-13x"></i></li>
-										<li><i class="icon-237 font-13x"></i></li>
-									</ul>
-								</figcaption>
-							</figure>
-							<div class="rooms-description">
-								<p>
-									Warm within me, that it might be the mirror of my soul, 
-									as my soul is the mirror <br> of the infinite God!
-								</p>
-								<div class="rooms-footer clearfix">
-									<span class="to-left align-button">Price: <b class="text-aquablue font-13x font-300">$120</b></span>
-									<a href="?page=room-preview" class="button-sm to-right grey text-black hover-orange soft-corners">Book now</a>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li class="col-md-4 col-sm-6">
-						<div class="text-center">
-							<h3 class="text-dark-blue"><a href="?page=room-preview" class="text-dark-blue hover-text-aquablue">Standard Suite</a></h3>
-							<figure>
-								<a href="http://placehold.it/600x600" class="zoom-image" title="Hotelia rooms" rel="gallery-1"><img src="http://placehold.it/600x600" alt="portfolio item"></a>
-								<figcaption class="aquablue text-white">
-									<ul class="inline-list center-me amenities">
-										<li><i class="icon-326 font-13x"></i></li>
-										<li><i class="icon-391 font-13x"></i></li>
-										<li><i class="icon-426 font-13x"></i></li>
-										<li><i class="icon-217 font-13x"></i></li>
-										<li><i class="icon-219 font-13x"></i></li>
-										<li><i class="icon-237 font-13x"></i></li>
-									</ul>
-								</figcaption>
-							</figure>
-							<div class="rooms-description">
-								<p>
-									Warm within me, that it might be the mirror of my soul, 
-									as my soul is the mirror <br> of the infinite God!
-								</p>
-								<div class="rooms-footer clearfix">
-									<span class="to-left align-button">Price: <b class="text-aquablue font-13x font-300">$120</b></span>
-									<a href="?page=room-preview" class="button-sm to-right grey text-black hover-orange soft-corners">Book now</a>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li class="col-md-4 col-sm-6">
-						<div class="text-center">
-							<h3 class="text-dark-blue"><a href="?page=room-preview" class="text-dark-blue hover-text-aquablue">Standard Suite</a></h3>
-							<figure>
-								<a href="http://placehold.it/600x600" class="zoom-image" title="Hotelia rooms" rel="gallery-1"><img src="http://placehold.it/600x600" alt="portfolio item"></a>
-								<figcaption class="aquablue text-white">
-									<ul class="inline-list center-me amenities">
-										<li><i class="icon-326 font-13x"></i></li>
-										<li><i class="icon-391 font-13x"></i></li>
-										<li><i class="icon-426 font-13x"></i></li>
-										<li><i class="icon-217 font-13x"></i></li>
-										<li><i class="icon-219 font-13x"></i></li>
-										<li><i class="icon-237 font-13x"></i></li>
-									</ul>
-								</figcaption>
-							</figure>
-							<div class="rooms-description">
-								<p>
-									Warm within me, that it might be the mirror of my soul, 
-									as my soul is the mirror <br> of the infinite God!
-								</p>
-								<div class="rooms-footer clearfix">
-									<span class="to-left align-button">Price: <b class="text-aquablue font-13x font-300">$120</b></span>
-									<a href="?page=room-preview" class="button-sm to-right grey text-black hover-orange soft-corners">Book now</a>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li class="col-md-4 col-sm-6">
-						<div class="text-center">
-							<h3 class="text-dark-blue"><a href="?page=room-preview" class="text-dark-blue hover-text-aquablue">Standard Suite</a></h3>
-							<figure>
-								<a href="http://placehold.it/600x600" class="zoom-image" title="Hotelia rooms" rel="gallery-1"><img src="http://placehold.it/600x600" alt="portfolio item"></a>
-								<figcaption class="aquablue text-white">
-									<ul class="inline-list center-me amenities">
-										<li><i class="icon-326 font-13x"></i></li>
-										<li><i class="icon-391 font-13x"></i></li>
-										<li><i class="icon-426 font-13x"></i></li>
-										<li><i class="icon-217 font-13x"></i></li>
-										<li><i class="icon-219 font-13x"></i></li>
-										<li><i class="icon-237 font-13x"></i></li>
-									</ul>
-								</figcaption>
-							</figure>
-							<div class="rooms-description">
-								<p>
-									Warm within me, that it might be the mirror of my soul, 
-									as my soul is the mirror <br> of the infinite God!
-								</p>
-								<div class="rooms-footer clearfix">
-									<span class="to-left align-button">Price: <b class="text-aquablue font-13x font-300">$120</b></span>
-									<a href="?page=room-preview" class="button-sm to-right grey text-black hover-orange soft-corners">Book now</a>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li class="col-md-4 col-sm-6">
-						<div class="text-center">
-							<h3 class="text-dark-blue"><a href="?page=room-preview" class="text-dark-blue hover-text-aquablue">Standard Suite</a></h3>
-							<figure>
-								<a href="http://placehold.it/600x600" class="zoom-image" title="Hotelia rooms" rel="gallery-1"><img src="http://placehold.it/600x600" alt="portfolio item"></a>
-								<figcaption class="aquablue text-white">
-									<ul class="inline-list center-me amenities">
-										<li><i class="icon-326 font-13x"></i></li>
-										<li><i class="icon-391 font-13x"></i></li>
-										<li><i class="icon-426 font-13x"></i></li>
-										<li><i class="icon-217 font-13x"></i></li>
-										<li><i class="icon-219 font-13x"></i></li>
-										<li><i class="icon-237 font-13x"></i></li>
-									</ul>
-								</figcaption>
-							</figure>
-							<div class="rooms-description">
-								<p>
-									Warm within me, that it might be the mirror of my soul, 
-									as my soul is the mirror <br> of the infinite God!
-								</p>
-								<div class="rooms-footer clearfix">
-									<span class="to-left align-button">Price: <b class="text-aquablue font-13x font-300">$120</b></span>
-									<a href="?page=room-preview" class="button-sm to-right grey text-black hover-orange soft-corners">Book now</a>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li class="col-md-4 col-sm-6">
-						<div class="text-center">
-							<h3 class="text-dark-blue"><a href="?page=room-preview" class="text-dark-blue hover-text-aquablue">Standard Suite</a></h3>
-							<figure>
-								<a href="http://placehold.it/600x600" class="zoom-image" title="Hotelia rooms" rel="gallery-1"><img src="http://placehold.it/600x600" alt="portfolio item"></a>
-								<figcaption class="aquablue text-white">
-									<ul class="inline-list center-me amenities">
-										<li><i class="icon-326 font-13x"></i></li>
-										<li><i class="icon-391 font-13x"></i></li>
-										<li><i class="icon-426 font-13x"></i></li>
-										<li><i class="icon-217 font-13x"></i></li>
-										<li><i class="icon-219 font-13x"></i></li>
-										<li><i class="icon-237 font-13x"></i></li>
-									</ul>
-								</figcaption>
-							</figure>
-							<div class="rooms-description">
-								<p>
-									Warm within me, that it might be the mirror of my soul, 
-									as my soul is the mirror <br> of the infinite God!
-								</p>
-								<div class="rooms-footer clearfix">
-									<span class="to-left align-button">Price: <b class="text-aquablue font-13x font-300">$120</b></span>
-									<a href="?page=room-preview" class="button-sm to-right grey text-black hover-orange soft-corners">Book now</a>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li class="col-md-4 col-sm-6">
-						<div class="text-center">
-							<h3 class="text-dark-blue"><a href="?page=room-preview" class="text-dark-blue hover-text-aquablue">Standard Suite</a></h3>
-							<figure>
-								<a href="http://placehold.it/600x600" class="zoom-image" title="Hotelia rooms" rel="gallery-1"><img src="http://placehold.it/600x600" alt="portfolio item"></a>
-								<figcaption class="aquablue text-white">
-									<ul class="inline-list center-me amenities">
-										<li><i class="icon-326 font-13x"></i></li>
-										<li><i class="icon-391 font-13x"></i></li>
-										<li><i class="icon-426 font-13x"></i></li>
-										<li><i class="icon-217 font-13x"></i></li>
-										<li><i class="icon-219 font-13x"></i></li>
-										<li><i class="icon-237 font-13x"></i></li>
-									</ul>
-								</figcaption>
-							</figure>
-							<div class="rooms-description">
-								<p>
-									Warm within me, that it might be the mirror of my soul, 
-									as my soul is the mirror <br> of the infinite God!
-								</p>
-								<div class="rooms-footer clearfix">
-									<span class="to-left align-button">Price: <b class="text-aquablue font-13x font-300">$120</b></span>
-									<a href="?page=room-preview" class="button-sm to-right grey text-black hover-orange soft-corners">Book now</a>
-								</div>
-							</div>
-						</div>
-					</li>
+					</tl:forEach>
+   
+					
 				</ul> <!-- /.row -->
 
 				<div class="row">
 					<div class="col-md-12">
 						<ul class="inline-list center-me pagination-links">
-							<li><a href="index.html">Prev</a></li>
-							<li><a href="index.html">1</a></li>
-							<li><a href="index.html">2</a></li>
-							<li><a href="index.html">3</a></li>
-							<li><a href="index.html">4</a></li>
-							<li><a href="index.html">5</a></li>
-							<li><span>...</span></li>
-							<li><a href="index.html">125</a></li>
-							<li><a href="index.html">Next</a></li>
+							<tl:if test="${currentPage > 5}">
+								<li><a href="Rooms?page=Prev">Prev</a></li>
+							</tl:if>
+							<tl:if test="${totalPages > 5}">
+								<tl:forEach var="i" begin="1" end="5">
+									<li><a href="Rooms?page=${(currentPage-1)+i}">${(currentPage-1)+i}</a></li>
+								</tl:forEach>
+								<li><span>...</span></li>
+								<li><a href="Rooms?page=${totalPages}"><tl:out value="${totalPages}"></tl:out></a></li>
+								<li><a href="Rooms?page=Next">Next</a></li>
+							</tl:if>
+							
+							
 						</ul>
 					</div>
 				</div> <!-- /.row -->

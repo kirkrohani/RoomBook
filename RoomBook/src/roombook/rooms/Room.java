@@ -1,6 +1,7 @@
 package roombook.rooms;
 
-public interface Room {
+public interface Room
+{
 
 	public abstract int getNumber();
 

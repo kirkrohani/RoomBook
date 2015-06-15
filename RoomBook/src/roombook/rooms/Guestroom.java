@@ -2,7 +2,9 @@ package roombook.rooms;
 
 
 import roombook.core.*;
+
 import java.io.Serializable;
+
 import javax.persistence.*;
 
 @SuppressWarnings("serial")
