@@ -25,7 +25,7 @@ public class ReservationController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		System.out.println("Inside ReservationController GET");
-		String defaultURL = "/make-reservation.jsp";
+		String defaultURL = "/MakeReservation.jsp";
 		HttpSession session = request.getSession();
 		
 		
@@ -45,10 +45,13 @@ public class ReservationController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		System.out.println("Inside ReservationController POST");
-		String date1 = request.getParameter("date1");
+		String date1 = request.getParameter("checkinDate");
 		System.out.println("DATE1: " + date1);
-		String date2 = request.getParameter("date2");
+		String date2 = request.getParameter("checkoutDate");
 		System.out.println("DATE1: " + date2);
+		
+		String defaultURL = "/ConfirmReservation.jsp";
+		getServletContext().getRequestDispatcher(defaultURL).forward(request, response);
 		
 	}
 

@@ -36,7 +36,7 @@ public class RoomController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		System.out.println("Inside RoomController GET");
-		String defaultURL = "/rooms.jsp";
+		String defaultURL = "/ViewRooms.jsp";
 		
 		HttpSession session = request.getSession();
 		
@@ -58,17 +58,14 @@ public class RoomController extends HttpServlet {
 		request.setAttribute("pagingEnd", BusinessLogic.getPagingEndingIndex(pageNum));
 		session.setAttribute("currentPage", pageNum);
 		
-		System.out.println("Page number: " + pageNum );
 		
 		/*
 		 * Check if we have already gotten all rooms and place into session
 		 */
 		if (request.getSession().getAttribute("rooms") == null)
 		{
-			System.out.println("Getting rooms");
 			List<Guestroom> guestrooms = GuestroomDAO.getAllRooms();
 			session.setAttribute("rooms", guestrooms);
-			System.out.println("TOTAL PAGES: " + BusinessLogic.getTotalNumberOfPages(guestrooms.size()));
 			session.setAttribute("totalPages", BusinessLogic.getTotalNumberOfPages(guestrooms.size()));
 		}
 		
