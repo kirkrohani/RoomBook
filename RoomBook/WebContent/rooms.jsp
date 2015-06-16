@@ -137,7 +137,7 @@
 								</p>
 								<div class="rooms-footer clearfix">
 									<span class="to-left align-button">Price: <b class="text-aquablue font-13x font-300">${room.price}</b></span>
-									<a href="Reservation" class="button-sm to-right grey text-black hover-orange soft-corners">Book now</a>
+									<a href="Reservation?RoomID=<tl:out value="${room.number}"/>" class="button-sm to-right grey text-black hover-orange soft-corners">Book now</a>
 								</div>
 							</div>
 						</div>

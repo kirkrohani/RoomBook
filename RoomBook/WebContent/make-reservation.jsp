@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="tl" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Hotelia - Developed with love by TeslaThemes.com</title>
+    <title>RoomBook - Let's book a room, shall we...</title>
     <meta name="description" content="Great theme for creative people">
     <!-- Responsive helper -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -43,8 +44,8 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-8">
                             <ul class="inline-list uppercase font-small header-meta">
-                                <li><i class="icon-312 font-13x"></i> NY Wall street 25.5</li>
-                                <li><i class="icon-274 font-13x"></i> hotelia@gmail.com</li>
+                                <li><i class="icon-312 font-13x"></i> Dallas, Texas 75251</li>
+                                <li><i class="icon-274 font-13x"></i> kirk.rohani@gmail.com</li>
                             </ul>
                         </div>
 
@@ -122,7 +123,7 @@
 												</figure>
 											</div>
 											<div class="col-md-10 col-sm-9">
-												<h3 class="blog-title text-dark-blue font-300">Hotelia Standard Room (<span class="text-orange">$49/night</span>)</h3>
+												<h3 class="blog-title text-dark-blue font-300"><tl:out value="${selectedRoom.bedType}"/> <tl:out value="${selectedRoom.type}" /> (<span class="text-orange"><tl:out value="${selectedRoom.price }"/> /night</span>)</h3>
 												<ol class="inline-list tag-list font-small">
 													<li>
 														<a href="#" class="button-sm green text-white hover-green hover-text-white">SPA</a>
@@ -141,24 +142,15 @@
 													</li>
 												</ol>
 												<div class="grey booking-form">
-													<form action="#" class="row no-padding">
+													<form action="Reservation" class="row no-padding" method="POST" id="form1">
+														
 														<div class="col-md-2">
-															<i class="icon-201"></i>
-															<input type="text" readonly class="room-select" placeholder="Room" value="Standart">
-															<ul class="clean-list font-small">
-																<li>Double</li>
-																<li>Lux</li>
-																<li>Single</li>
-															</ul>
-
+															<i class="icon-233"></i>
+															<input type="text"  name="date1" id="check-in" placeholder="Check in" value="07-15-2015">
 														</div>
 														<div class="col-md-2">
 															<i class="icon-233"></i>
-															<input type="text" id="check-in" placeholder="Check in" value="10-28-201">
-														</div>
-														<div class="col-md-2">
-															<i class="icon-233"></i>
-															<input type="text" id="check-out" placeholder="Check out" value="11-28-201">
+															<input type="text"  name="date2" id="check-out" placeholder="Check out" value="07-16-2015">
 														</div>
 														<div class="col-md-2">
 															<i class="icon-201"></i>
@@ -183,6 +175,7 @@
 															</ul>
 
 														</div>
+														
 													</form>
 												</div>
 											</div>
@@ -215,11 +208,11 @@
 										<label class="radio-fancy">
 											<input type="radio" name="test-check">
 											<span class="light-blue round-corners"><i class="darken round-corners"></i></span>
-											<em>I read and accept the terms & conditions</em>
+											<em>I read and accept the terms and conditions</em>
 										</label>
 									</p>
 									<p class="clearfix">
-										<a href="#" class="button-md green to-right hover-dark-green nav-step" data-target="next">Next</a>
+										<a href="javascript:;" onclick="document.getElementById('form1').submit();" class="button-md green to-right hover-dark-green nav-step" data-target="next">Next</a>
 									</p>
 								</div>
 							</div> <!-- /.row -->
@@ -227,8 +220,8 @@
 
 						<li>
 							<div class="row">
-								<form action="">
-								<div class="col-md-6">							
+						<form action="#" class="#">
+						<div class="col-md-6">							
 										<p>
 											<input type="text" name="f_name" placeholder="First name">
 										</p>
@@ -311,9 +304,10 @@
 									</p>
 								</div>
 							</div>
-							</form>
+						</form>
+								
 						</li>
-
+						
 						<li>
 							<div class="row">
 								<form action="#">

@@ -460,16 +460,16 @@ var teslaThemes = {
   },
 
   datePicker: function() {
-    jQuery('#check-in').datetimepicker({
+    jQuery('#check-out').datetimepicker({
       format:'m-d-Y',
       onShow:function( ct ){
         this.setOptions({
-          maxDate:jQuery('#check-out').val()?jQuery('#check-out').val():false
+          maxDate:jQuery('12-31-50').val()?jQuery('#check-out').val():false
         })
       },
       timepicker:false
     });
-    jQuery('#check-out').datetimepicker({
+    jQuery('#check-in').datetimepicker({
       format:'m-d-Y',
       onShow:function( ct ){
         this.setOptions({
