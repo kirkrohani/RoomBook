@@ -39,18 +39,22 @@ public class RoomController extends HttpServlet {
 		String defaultURL = "/ViewRooms.jsp";
 		
 		HttpSession session = request.getSession();
-		
 		String pageController = request.getParameter("page");
 		
 		int pageNum = 1;
 		if (pageController != null)
 		{
-			if (pageController.equals("Next"))
+			switch(pageController)
+			{
+			case "Next" :
 				pageNum = (int) session.getAttribute("currentPage") + 1;
-			else if (pageController.equals("Prev"))
+				break;
+			case "Prev" :
 				pageNum = (int) session.getAttribute("currentPage") - 1;
-			else
+				break;
+			default :
 				pageNum = Integer.parseInt(pageController);
+			}	
 				
 		}
 

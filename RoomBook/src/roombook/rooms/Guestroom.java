@@ -2,9 +2,7 @@ package roombook.rooms;
 
 
 import roombook.core.*;
-
 import java.io.Serializable;
-
 import javax.persistence.*;
 
 @SuppressWarnings("serial")
@@ -38,7 +36,8 @@ public class Guestroom implements Room, Serializable
 
 
 	@Override
-	public int getNumber() {
+	public int getNumber() 
+	{
 		return number;
 	}
 
