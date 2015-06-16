@@ -117,7 +117,7 @@
 				<tl:forEach items="${rooms}" var="room" begin="${pagingStart}" end="${pagingEnd}">
 					<li class="col-md-4 col-sm-6">
 						<div class="text-center">
-							<h3 class="text-dark-blue"><a href="room-details.jsp" class="text-dark-blue hover-text-aquablue">Room <tl:out value="${room.number}"> </tl:out>    <tl:out value="${room.type}" /></a></h3>
+							<h3 class="text-dark-blue"><a href="room-details.jsp" class="text-dark-blue hover-text-aquablue"> <tl:out value="${room.bedType}"/> <tl:out value="${room.type}" /> <tl:out value="${room.number}"/>   </a></h3>
 							<figure>
 								<a href="http://placehold.it/600x600"  title="RoomBook rooms" rel="gallery-1"><img src="http://placehold.it/600x600" alt="portfolio item"></a>
 								<figcaption class="aquablue text-white">
@@ -137,7 +137,7 @@
 								</p>
 								<div class="rooms-footer clearfix">
 									<span class="to-left align-button">Price: <b class="text-aquablue font-13x font-300">${room.price}</b></span>
-									<a href="?page=room-preview" class="button-sm to-right grey text-black hover-orange soft-corners">Book now</a>
+									<a href="Reservation" class="button-sm to-right grey text-black hover-orange soft-corners">Book now</a>
 								</div>
 							</div>
 						</div>
@@ -150,16 +150,25 @@
 				<div class="row">
 					<div class="col-md-12">
 						<ul class="inline-list center-me pagination-links">
-							<tl:if test="${currentPage > 5}">
+							<tl:set var="endPager" value="5"/>
+							<tl:if test="${currentPage > 1}">
 								<li><a href="Rooms?page=Prev">Prev</a></li>
 							</tl:if>
+							<tl:if test="${(totalPages-currentPage) < 5}">
+								<tl:set var="endPager" value="${totalPages}"/>
+							</tl:if>
+							<tl:if test="${(totalPages-currentPage) >= 5}">
+								<tl:set var="endPager" value="${currentPage+4}"/>
+							</tl:if>
 							<tl:if test="${totalPages > 5}">
-								<tl:forEach var="i" begin="1" end="5">
-									<li><a href="Rooms?page=${(currentPage-1)+i}">${(currentPage-1)+i}</a></li>
+								<tl:forEach var="i" begin="${currentPage}" end="${endPager}">
+									<li><a href="Rooms?page=${i}">${i}</a></li>
 								</tl:forEach>
-								<li><span>...</span></li>
-								<li><a href="Rooms?page=${totalPages}"><tl:out value="${totalPages}"></tl:out></a></li>
-								<li><a href="Rooms?page=Next">Next</a></li>
+								<tl:if test="${(totalPages-currentPage) >= 5}">
+									<li><span>...</span></li>
+									<li><a href="Rooms?page=${totalPages}"><tl:out value="${totalPages}"></tl:out></a></li>
+									<li><a href="Rooms?page=Next">Next</a></li>
+								</tl:if>
 							</tl:if>
 							
 							

@@ -46,9 +46,9 @@ public class RoomController extends HttpServlet {
 		if (pageController != null)
 		{
 			if (pageController.equals("Next"))
-				pageNum = (int) session.getAttribute("currentPage") + 5;
+				pageNum = (int) session.getAttribute("currentPage") + 1;
 			else if (pageController.equals("Prev"))
-				pageNum = (int) session.getAttribute("currentPage") - 5;
+				pageNum = (int) session.getAttribute("currentPage") - 1;
 			else
 				pageNum = Integer.parseInt(pageController);
 				
