@@ -1,11 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="tl" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="en" class="no-js">
-
+<html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Hotelia - Developed with love by TeslaThemes.com</title>
+    <title>RoomBook - We just booked a room.... Woohoo!</title>
     <meta name="description" content="Great theme for creative people">
     <!-- Responsive helper -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,7 +35,6 @@
 
     <script src="js/modernizr.js"></script>
 </head>
-
 <body>
     <div id="home" class="boxed-view">
         <header class="main-header clearfix">
@@ -44,8 +44,8 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-8">
                             <ul class="inline-list uppercase font-small header-meta">
-                                <li><i class="icon-312 font-13x"></i> Dallas, Texas 75251</li>
-                                <li><i class="icon-274 font-13x"></i> kirk.rohani@gmail.com</li>
+                                <li><i class="icon-312 font-13x"></i> Dallas, Tx 75251 </li>
+                                <li><i class="icon-274 font-13x"></i> kirk.rohani@gmail.com </li>
                             </ul>
                         </div>
 
@@ -63,10 +63,7 @@
                 </div>
             </div>
             <!-- /.header-bar -->
-			<%@ include file="mainmenu.jsp" %>
-           
-                <!-- /.container -->
-            </div>
+			<%@include file="mainmenu.jsp" %>
             <!-- /.nav-bar -->
         </header>
         <!-- /.main-nav -->

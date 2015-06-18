@@ -1,11 +1,10 @@
-<%@ taglib prefix="tl" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
-
+<%@ taglib prefix="tl" uri="http://java.sun.com/jsp/jstl/core" %>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>RoomBook - Let's book a room, shall we....</title>
+    <title>Hotelia - Developed with love by TeslaThemes.com</title>
     <meta name="description" content="Great theme for creative people">
     <!-- Responsive helper -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -63,16 +62,15 @@
                 </div>
             </div>
             <!-- /.header-bar -->
-			<%@ include file="mainmenu.jsp" %>
-           
-                <!-- /.container -->
-            </div>
+
+			<jsp:include page="mainmenu.jsp"/>
             <!-- /.nav-bar -->
         </header>
         <!-- /.main-nav -->
 
         <!-- main content -->
         <section class="box">
+        <form id="reservation" method="POST" action="Reservation" >
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
@@ -120,12 +118,13 @@
 											<div class="col-md-2 col-sm-3">
 												<figure>
 													<a href="#" class="zoom-image">
-														<img src="http://placehold.it/600x600" alt="">
+														<img src="img/regular_double.jpeg" alt="">
 													</a>
 												</figure>
+												
 											</div>
 											<div class="col-md-10 col-sm-9">
-												<h3 class="blog-title text-dark-blue font-300"><tl:out value="${selectedRoom.bedType }"/> <tl:out value="${selectedRoom.type }"/> (<span class="text-orange"><tl:out value="${selectedRoom.price }"/>/night</span>)</h3>
+												<h3 class="blog-title text-dark-blue font-300"><tl:out value="${selectedRoom.type}"/> <tl:out value="${selectedRoom.bedType}"/> Room # <tl:out value="${selectedRoom.number}"/> (<span class="text-orange"><tl:out value="${selectedRoom.price}" />/night</span>)</h3>
 												<ol class="inline-list tag-list font-small">
 													<li>
 														<a href="#" class="button-sm green text-white hover-green hover-text-white">SPA</a>
@@ -144,20 +143,19 @@
 													</li>
 												</ol>
 												<div class="grey booking-form">
-													<form action="Reservation" method="POST" id="reservationForm" class="row no-padding">
-													
+														
 														<div class="col-md-2">
-														<p>Check-in Date</p>
+															<p class="row no-padding">Check In Date</p>
 															<i class="icon-233"></i>
 															<input type="text" name="checkinDate" id="check-in" placeholder="Check in" value="10-28-201">
 														</div>
 														<div class="col-md-2">
-														<p>Check-out Date</p>
+															<p class="row no-padding">Check Out Date</p>
 															<i class="icon-233"></i>
 															<input type="text" name="checkoutDate" id="check-out" placeholder="Check out" value="11-28-201">
 														</div>
 														<div class="col-md-2">
-														<p>Number of Adults</p>
+															<p class="row no-padding">Number of Adults</p>
 															<i class="icon-201"></i>
 															<input type="text" readonly class="room-select" placeholder="Adults" value="2">
 															<ul class="clean-list font-small">
@@ -169,7 +167,7 @@
 															</ul>
 														</div>
 														<div class="col-md-2">
-														<p>Number of Children</p>
+															<p class="row no-padding">Number of Children</p>
 															<i class="icon-201"></i>
 															<input type="text" readonly class="room-select" placeholder="Children" value="1">
 															<ul class="clean-list font-small">
@@ -181,7 +179,6 @@
 															</ul>
 
 														</div>
-													<!-- *** </form>-->
 												</div>
 											</div>
 										</div>
@@ -192,10 +189,10 @@
 										<tbody>
 											<tr>
 												<td>Room:</td>
-												<td class="text-right">30 night x <span class="text-orange">$<tl:out value="${selectedRoom.price }"/></span></td>
+												<td class="text-right">30 night x <span class="text-orange">49$</span></td>
 											</tr>
 											<tr>
-												<td>Additional fee:</td>
+												<td>Additinal fee:</td>
 												<td class="text-right text-orange">119$</td>
 											</tr>
 											<tr>
@@ -213,7 +210,7 @@
 										<label class="radio-fancy">
 											<input type="radio" name="test-check">
 											<span class="light-blue round-corners"><i class="darken round-corners"></i></span>
-											<em>I read and accept the terms & conditions</em>
+											<em>I read and accept the terms and conditions</em>
 										</label>
 									</p>
 									<p class="clearfix">
@@ -225,7 +222,6 @@
 
 						<li>
 							<div class="row">
-								<!-- *** <form action="#">-->
 								<div class="col-md-6">							
 										<p>
 											<input type="text" name="f_name" placeholder="First name">
@@ -309,12 +305,10 @@
 									</p>
 								</div>
 							</div>
-							<!-- *** </form>-->
 						</li>
 
 						<li>
 							<div class="row">
-								<!--  *** <form action="#">-->
 								<div class="col-md-6">
 									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia voluptatem laborum magni facilis officiis vel accusantium sed hic cumque quis id a nihil dicta, dignissimos blanditiis tempore quidem tenetur culpa!
 									<h3 class="font-300">Select Payment method</h3>
@@ -378,17 +372,18 @@
 									<br>
 								</div>
 							</div>
+							
 							<div class="row">
 								<div class="col-md-6 col-xs-6">
 									<a href="#" class="button-md grey text-dark hover-orange nav-step" data-target="prev">Back</a>
 								</div>
 								<div class="col-md-6 col-xs-6">
 									<p class="text-right">
-										<a href="javascript:;" onclick="document.getElementById('reservationForm').submit()" class="button-md green hover-dark-green nav-step" data-target="next">Confirm and Pay</a>
+										<a href="javascript:;" onclick="document.forms['reservation'].submit();return false;" class="button-md green hover-dark-green nav-step" data-target="next">Confirm and Pay</a>
 									</p>
 								</div>
 							</div>
-							</form>
+							
 						</li>
 						<li>
 							<div class="row">
@@ -428,129 +423,10 @@
 					</ul>
 				</div>
 			</div> <!-- /.container -->
+			</form>
 		</section> <!-- /.box -->
         
-		<footer class="main-footer">
-			<!-- Footer widgets -->
-			<div class="big-footer box darken-less">
-				<div class="container">
-					<div class="footer-sidebar row">
-
-						<div class="col-md-4 col-sm-6 widget">
-							<figure>
-								<a href="#">
-									<img src="img/logo-corp.png" alt="logo footer">
-								</a>
-							</figure>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus a incidunt, amet illum maiores nihil. Nihil repellat dolorum fugit doloribus earum!
-							</p>
-
-							<ul class="clean-list contact-info text-dark-blue uppercase">
-								<li><i class="icon-338 font-2x"></i> <b>Address: </b> West bridge, LA,  New York 225 of 254/5A</li>
-								<li><i class="icon-274 font-2x"></i> <b>E-mail: </b> <a href="mailto:otelia@gmail.com">otelia@gmail.com</a></li>
-								<li><i class="icon-274 font-2x"></i> <b>E-mail: </b> <a href="mailto:hotelia@gmail.com">hotelia@gmail.com</a></li>
-								<li><i class="icon-402 font-2x"></i> <b>Phone: </b> (001) 777 555 888</li>
-								<li><i class="icon-402 font-2x"></i> <b>Phone: </b> (001) 777 555 999</li>
-							</ul>
-						</div>
-						
-						<div class="col-md-4 col-sm-6 widget post-widget">
-							<h4>Follow Hotelia</h4>
-							<ul class="inline-list social-links">
-								<li>
-									<a href="#" class="social-facebook shape-square font-2x soft-corners"><i class="icon-528"></i></a>
-								</li>
-								<li>
-									<a href="#" class="social-twitter shape-square font-2x soft-corners"><i class="icon-556"></i></a>
-								</li>
-								<li>
-									<a href="#" class="social-foursquare shape-square font-2x soft-corners"><i class="icon-530"></i></a>
-								</li>
-								<li>
-									<a href="#" class="social-pinterest shape-square font-2x text-white soft-corners"><i class="icon-545"></i></a>
-								</li>
-							</ul>
-							<div class="subscribe-wrapper">
-								<form action="#" class="subscribe-form row">
-									<div class="col-md-12">
-										<h4>Newsletter Subscribe</h4>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda inventore ex laborum numquam at iusto facere.</p>
-									</div>
-									<p class="col-md-12">
-										<input type="text" name="subscribe">
-									</p>
-									<p class="col-md-12">
-										<button type="submit" class="button-md green hover-dark-green full-size">Submit</button>
-									</p>
-								</form>
-							</div>							
-						</div>
-						<div class="col-md-4 col-sm-12 widget">
-							<h4>Flickr Photo</h4>
-							<ul class="flickr-widget clean-list row" data-userid="36587311@N08" data-items="6">
-							</ul>
-							<div class="usefull-links">
-								<h4>Usefull link</h4>
-								<ul class="">
-									<li class="col-md-4 col-sm-4 col-xs-6">
-										<a href="#">About us</a>
-									</li>
-									<li class="col-md-4 col-sm-4 col-xs-6">
-										<a href="#">Help Center</a>
-									</li>
-									<li class="col-md-4 col-sm-4 col-xs-6">
-										<a href="#">Careers</a>
-									</li>
-									<li class="col-md-4 col-sm-4 col-xs-6">
-										<a href="#">Global Sites</a>
-									</li>
-									<li class="col-md-4 col-sm-4 col-xs-6">
-										<a href="#">Privacy</a>
-									</li>
-									<li class="col-md-4 col-sm-4 col-xs-6">
-										<a href="#">Travel</a>
-									</li>
-									<li class="col-md-4 col-sm-4 col-xs-6">
-										<a href="#">Affiliate </a>
-									</li>
-									<li class="col-md-4 col-sm-4 col-xs-6">
-										<a href="#">Businesses</a>
-									</li>
-									<li class="col-md-4 col-sm-4 col-xs-6">
-										<a href="#">Contact Support</a>
-									</li>
-									<li class="col-md-4 col-sm-4 col-xs-6">
-										<a href="#">Shopping </a>
-									</li>
-									<li class="col-md-4 col-sm-4 col-xs-6">
-										<a href="#">Site Map</a>
-									</li>
-									<li class="col-md-4 col-sm-4 col-xs-6">
-										<a href="#">Investor Relations</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div><!-- /.row -->
-				</div><!-- /.container -->
-			</div><!-- /.big-footer -->
-			<!-- Copyright section -->
-			<div class="small-footer">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<p class="copyright center-me uppercase font-small">
-								<span>copyright 2013</span>
-								<a href="#">hotelia</a>
-								<span> designed by</span>
-								<a href="http://teslathemes.com">Teslathemes</a>	
-							</p>
-						</div>
-					</div> <!-- /.row -->
-				</div>			
-			</div><!-- /.small-footer -->			
-		</footer><!-- /.main-footer -->
+	<jsp:include page="footer.jsp"/>
 	</div><!-- /.boxed-view -->
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
