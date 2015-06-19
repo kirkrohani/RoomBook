@@ -157,7 +157,7 @@
 														<div class="col-md-2">
 															<p class="row no-padding">Number of Adults</p>
 															<i class="icon-201"></i>
-															<input type="text" readonly class="room-select" placeholder="Adults" value="2">
+															<input type="text" name="numberOfAdults" readonly class="room-select" placeholder="Adults" value="2">
 															<ul class="clean-list font-small">
 																<li>1</li>
 																<li>2</li>
@@ -169,7 +169,7 @@
 														<div class="col-md-2">
 															<p class="row no-padding">Number of Children</p>
 															<i class="icon-201"></i>
-															<input type="text" readonly class="room-select" placeholder="Children" value="1">
+															<input type="text" name="numberOfChildren" readonly class="room-select" placeholder="Children" value="1">
 															<ul class="clean-list font-small">
 																<li>1</li>
 																<li>2</li>
@@ -225,16 +225,16 @@
 							<div class="row">
 								<div class="col-md-6">							
 										<p>
-											<input type="text" name="f_name" placeholder="First name">
+											<input type="text" name="firstname" placeholder="First name">
 										</p>
 										<p>
-											<input type="text" name="l_name" placeholder="Last name">
+											<input type="text" name="lastname" placeholder="Last name">
 										</p>
 										<p>
 											<input type="email" name="email" placeholder="E-mail">
 										</p>
 										<p>
-											<input type="tel" name="tel" placeholder="Telephone Number">
+											<input type="tel" name="phone" placeholder="Telephone Number">
 										</p>
 										<p>
 											<textarea name="notices" cols="30" rows="10" placeholder="Notes and special requests"></textarea>

@@ -42,9 +42,7 @@ public class RoomController extends HttpServlet
 		session.setAttribute("currentPage", pageNum);
 		
 		
-		/*
-		 * Check if we have already gotten all rooms and place into session
-		 */
+		//Check if we have already gotten all rooms and place into session
 		if (session.getAttribute("rooms") == null)
 		{
 			List<Guestroom> guestrooms = roomServices.getAllRooms();
@@ -53,9 +51,21 @@ public class RoomController extends HttpServlet
 				session.setAttribute("rooms", guestrooms);
 				session.setAttribute("totalPages", roomServices.getTotalNumberOfPages(guestrooms.size()));
 			}
-			
 		}
 		
+		//Check if we have already gotten all rooms types and place into session
+		if (session.getAttribute("roomtypes") == null)
+		{
+			List<String> roomtypes = roomServices.getAllRoomTypes();
+			if (roomtypes != null && !roomtypes.isEmpty())
+			{
+				session.setAttribute("roomtypes", roomtypes);
+				
+					System.out.println("ROOMTYPE: " + roomtypes.size());
+					System.out.println( " HUH: " + roomtypes);
+			}
+				
+		}
 		
 		getServletContext().getRequestDispatcher(defaultURL).forward(request, response);
 	}

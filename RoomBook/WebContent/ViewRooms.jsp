@@ -85,27 +85,12 @@
 					<div class="col-md-12">
 						<div class="orange">
 							<ul class="inline-list filter-tags center-me">
+							
+								<tl:forEach items="${roomtypes}" var="type">
 								<li>
-									<a href="#" class="text-white hover-text-orange">Deluxe room </a>
+									<a href="#" class="text-white hover-text-orange"><tl:out value="${type}"/> Room</a>
 								</li>
-								<li>
-									<a href="#" class="text-white hover-text-orange">Elegant room</a>
-								</li>
-								<li>
-									<a href="#" class="text-white hover-text-orange">Luxury room</a>
-								</li>
-								<li>
-									<a href="#" class="text-white hover-text-orange">Guest room</a>
-								</li>
-								<li>
-									<a href="#" class="text-white hover-text-orange">Bedroom suite</a>
-								</li>
-								<li>
-									<a href="#" class="text-white hover-text-orange">Business suite</a>
-								</li>
-								<li>
-									<a href="#" class="text-white hover-text-orange">Presidential suite</a>
-								</li>
+								</tl:forEach>
 							</ul>
 						</div>
 						<br>
@@ -117,9 +102,9 @@
 				<tl:forEach items="${rooms}" var="room" begin="${pagingStart}" end="${pagingEnd}">
 					<li class="col-md-4 col-sm-6">
 						<div class="text-center">
-							<h3 class="text-dark-blue"><a href="room-details.jsp" class="text-dark-blue hover-text-aquablue"> <tl:out value="${room.bedType}"/> <tl:out value="${room.type}" /> <tl:out value="${room.number}"/>   </a></h3>
+							<h3 class="text-dark-blue"><a href="room-details.jsp" class="text-dark-blue hover-text-aquablue"> <tl:out value="${room.type}"/> <tl:out value="${room.bedType}" /> <tl:out value="${room.number}"/>   </a></h3>
 							<figure>
-								<a href="http://placehold.it/600x600"  title="RoomBook rooms" rel="gallery-1"><img src="http://placehold.it/600x600" alt="portfolio item"></a>
+								<a href="http://placehold.it/600x600"  title="RoomBook rooms" rel="gallery-1"><img src="img/regular_double.jpeg" alt="portfolio item"></a>
 								<figcaption class="aquablue text-white">
 									<ul class="inline-list center-me amenities">
 										<li><i class="icon-326 font-13x"></i></li>
