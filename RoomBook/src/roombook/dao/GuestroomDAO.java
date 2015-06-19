@@ -7,7 +7,7 @@ import java.util.List;
 
 public class GuestroomDAO 
 {
-	public static List<Guestroom> getAllRooms()
+	public List<Guestroom> getAllRooms()
 	{
 		EntityManager em = DatabaseUtils.getEMFactory().createEntityManager();
 		String query = "SELECT r from Guestroom r";

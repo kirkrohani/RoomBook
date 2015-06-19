@@ -152,22 +152,22 @@
 						<ul class="inline-list center-me pagination-links">
 							<tl:set var="endPager" value="5"/>
 							<tl:if test="${currentPage > 1}">
-								<li><a href="Rooms?page=Prev">Prev</a></li>
+								<li><a href="Rooms?currentPage=${currentPage-1}">Prev</a></li>
 							</tl:if>
 							<tl:if test="${(totalPages-currentPage) < 5}">
 								<tl:set var="endPager" value="${totalPages}"/>
 							</tl:if>
 							<tl:if test="${(totalPages-currentPage) >= 5}">
-								<tl:set var="endPager" value="${currentPage+4}"/>
+								<tl:set var="endPager" value="${currentPage+5}"/>
 							</tl:if>
 							<tl:if test="${totalPages > 5}">
-								<tl:forEach var="i" begin="${currentPage}" end="${endPager}">
-									<li><a href="Rooms?page=${i}">${i}</a></li>
+								<tl:forEach var="i" begin="${currentPage+1}" end="${endPager}">
+									<li><a href="Rooms?currentPage=${i}">${i}</a></li>
 								</tl:forEach>
 								<tl:if test="${(totalPages-currentPage) >= 5}">
 									<li><span>...</span></li>
-									<li><a href="Rooms?page=${totalPages}"><tl:out value="${totalPages}"></tl:out></a></li>
-									<li><a href="Rooms?page=Next">Next</a></li>
+									<li><a href="Rooms?currentPage=${totalPages}"><tl:out value="${totalPages}"></tl:out></a></li>
+									<li><a href="Rooms?currentPage=${currentPage+1}">Next</a></li>
 								</tl:if>
 							</tl:if>
 							

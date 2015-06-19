@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Hotelia - Developed with love by TeslaThemes.com</title>
+    <title>RoomBook - Let's book a room, shall we....</title>
     <meta name="description" content="Great theme for creative people">
     <!-- Responsive helper -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -124,7 +124,7 @@
 												
 											</div>
 											<div class="col-md-10 col-sm-9">
-												<h3 class="blog-title text-dark-blue font-300"><tl:out value="${selectedRoom.type}"/> <tl:out value="${selectedRoom.bedType}"/> Room # <tl:out value="${selectedRoom.number}"/> (<span class="text-orange"><tl:out value="${selectedRoom.price}" />/night</span>)</h3>
+												<h3 class="blog-title text-dark-blue font-300"><tl:out value="${selectedRoom.type}"/> <tl:out value="${selectedRoom.bedType}"/> Room # <tl:out value="${selectedRoom.number}"/> (<span class="text-orange">$<tl:out value="${selectedRoom.price}" />/night</span>)</h3>
 												<ol class="inline-list tag-list font-small">
 													<li>
 														<a href="#" class="button-sm green text-white hover-green hover-text-white">SPA</a>
@@ -188,23 +188,24 @@
 									<table>
 										<tbody>
 											<tr>
-												<td>Room:</td>
-												<td class="text-right">30 night x <span class="text-orange">49$</span></td>
+												<td>Room charges:</td>
+												<td class="text-right">30 night x <span class="text-orange">$<tl:out value="${selectedRoom.price }"/></span></td>
 											</tr>
 											<tr>
-												<td>Additinal fee:</td>
-												<td class="text-right text-orange">119$</td>
+												<td>Additional fees:</td>
+												<td class="text-right text-orange">$119</td>
 											</tr>
 											<tr>
-												<td class="uppercase font-500 text-green">Grand-total:</td>
-												<td class="text-right text-orange">1589$</td>
+												<td class="uppercase font-500 text-green">Grand total:</td>
+												<td class="text-right text-orange">$1589</td>
 											</tr>
 										</tbody>
 									</table>
 								</div>
 								<div class="col-md-8">
 									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil atque modi velit molestiae, repellendus iure sint possimus cumque, provident, dolorum unde laboriosam ut eius ex maiores quod repudiandae aut asperiores?
+										<b>Terms and Conditions</b>
+										These terms and conditions, as may be amended from time to time, apply to all our services directly or indirectly (through distributors) made available online, through any mobile device, by email or by telephone. By accessing, browsing and using our website or any of our applications through whatever platform (hereafter collectively referred to as the "website") and/or by completing a reservation, you acknowledge and agree to have read, understood and agreed to the terms and conditions set out below (including the privacy statement).
 									</p>
 									<p>
 										<label class="radio-fancy">

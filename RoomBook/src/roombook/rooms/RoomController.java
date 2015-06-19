@@ -10,76 +10,57 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-import roombook.core.BusinessLogic;
-import roombook.dao.GuestroomDAO;
 
 
 /**
  * Servlet implementation class RoomServlet
  */
 @WebServlet(name="RoomController", urlPatterns="/Rooms")
-public class RoomController extends HttpServlet {
+public class RoomController extends HttpServlet 
+{
 	private static final long serialVersionUID = 1L;
+	private RoomServices roomServices = new RoomServices();
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public RoomController() 
-    {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		System.out.println("Inside RoomController GET");
 		String defaultURL = "/ViewRooms.jsp";
 		
 		HttpSession session = request.getSession();
-		String pageController = request.getParameter("page");
+		
+		String nextPage = request.getParameter("currentPage");
 		
 		int pageNum = 1;
-		if (pageController != null)
-		{
-			switch(pageController)
-			{
-			case "Next" :
-				pageNum = (int) session.getAttribute("currentPage") + 1;
-				break;
-			case "Prev" :
-				pageNum = (int) session.getAttribute("currentPage") - 1;
-				break;
-			default :
-				pageNum = Integer.parseInt(pageController);
-			}	
-				
-		}
+		if (nextPage != null && !nextPage.isEmpty())
+			pageNum = Integer.parseInt(nextPage);
 
-		request.setAttribute("pagingStart", BusinessLogic.getPagingStartingIndex(pageNum));
-		request.setAttribute("pagingEnd", BusinessLogic.getPagingEndingIndex(pageNum));
+
+		request.setAttribute("pagingStart", roomServices.getPagingStartingIndex(pageNum));
+		request.setAttribute("pagingEnd", roomServices.getPagingEndingIndex(pageNum));
 		session.setAttribute("currentPage", pageNum);
 		
 		
 		/*
 		 * Check if we have already gotten all rooms and place into session
 		 */
-		if (request.getSession().getAttribute("rooms") == null)
+		if (session.getAttribute("rooms") == null)
 		{
-			List<Guestroom> guestrooms = GuestroomDAO.getAllRooms();
-			session.setAttribute("rooms", guestrooms);
-			session.setAttribute("totalPages", BusinessLogic.getTotalNumberOfPages(guestrooms.size()));
+			List<Guestroom> guestrooms = roomServices.getAllRooms();
+			if (guestrooms != null && !guestrooms.isEmpty())
+			{
+				session.setAttribute("rooms", guestrooms);
+				session.setAttribute("totalPages", roomServices.getTotalNumberOfPages(guestrooms.size()));
+			}
+			
 		}
 		
 		
 		getServletContext().getRequestDispatcher(defaultURL).forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		System.out.println("Inside RoomController POST Method");
