@@ -225,10 +225,10 @@
 							<div class="row">
 								<div class="col-md-6">							
 										<p>
-											<input type="text" name="firstname" placeholder="First name">
+											<input type="text" name="firstName" placeholder="First name">
 										</p>
 										<p>
-											<input type="text" name="lastname" placeholder="Last name">
+											<input type="text" name="lastName" placeholder="Last name">
 										</p>
 										<p>
 											<input type="email" name="email" placeholder="E-mail">
@@ -237,7 +237,7 @@
 											<input type="tel" name="phone" placeholder="Telephone Number">
 										</p>
 										<p>
-											<textarea name="notices" cols="30" rows="10" placeholder="Notes and special requests"></textarea>
+											<textarea name="notes" cols="30" rows="10" placeholder="Notes and special requests"></textarea>
 										</p>
 								</div>
 

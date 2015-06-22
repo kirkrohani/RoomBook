@@ -23,6 +23,7 @@ public class RoomServices implements IRoomServices
 	 * QUERY: "SELECT r from Guestroom r"
 	 * RETURNS: All guest rooms in the hotel
 	 */
+	@Override
 	public List<Guestroom> getAllRooms()
 	{
 		return roomData.getAllRooms();
@@ -34,6 +35,7 @@ public class RoomServices implements IRoomServices
 	 * QUERY: "SELECT DISTINCT(room.type) from Guestroom room"
 	 * RETURNS: All unique room types at the hotel
 	 */
+	@Override
 	public List<String> getAllRoomTypes()
 	{
 		List<String> roomTypes = new ArrayList<String>();

@@ -7,13 +7,21 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="/Applications/apache-tomcat-8.0/lib/servlet-api.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JPALibs">
+	<classpathentry kind="lib" path="/Applications/apache-tomcat-8.0/lib/servlet-api.jar">
 		<attributes>
-			<attribute name="owner.project.facets" value="#system#;jpt.jpa"/>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.datatools.connectivity.jdt.DRIVERLIBRARY/MySQL JDBC Driver"/>
-	<classpathentry kind="lib" path="/Applications/apache-tomcat-8.0/lib/jstl-1.2.jar"/>
+	<classpathentry kind="con" path="org.eclipse.datatools.connectivity.jdt.DRIVERLIBRARY/MySQL JDBC Driver">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Applications/apache-tomcat-8.0/lib/jstl-1.2.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JPALibs"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

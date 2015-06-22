@@ -19,9 +19,10 @@ import roombook.rooms.*;
 @WebServlet(name="/ReservationController", urlPatterns="/Reservation")
 public class ReservationController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private ReservationServices reservationServices = new ReservationServices();
        
 
-	@SuppressWarnings("unchecked")
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		System.out.println("Inside ReservationController GET");
@@ -33,8 +34,9 @@ public class ReservationController extends HttpServlet {
 		 * Get the selected room id and then return the room object back to JSP
 		 */
 		int roomNumber = Integer.parseInt(request.getParameter("RoomID"));
-		List<Guestroom> hotelrooms =  (List<Guestroom>) session.getAttribute("rooms");
-		Guestroom room = getRoom(roomNumber, hotelrooms);
+		@SuppressWarnings("unchecked")
+		List<Guestroom> list = (List<Guestroom>) session.getAttribute("rooms");
+		Guestroom room = reservationServices.getRoom(roomNumber, list);
 		
 		session.setAttribute("selectedRoom", room);
 			
@@ -44,25 +46,14 @@ public class ReservationController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		System.out.println("Inside ReservationController POST");
-		String date1 = request.getParameter("checkinDate");
-		System.out.println("DATE1: " + date1);
-		String date2 = request.getParameter("checkoutDate");
-		System.out.println("DATE1: " + date2);
+		IReservation r = reservationServices.getReservationData(request);
+		System.out.println("reservation data: " + r);
 		
 		String defaultURL = "/ConfirmReservation.jsp";
 		getServletContext().getRequestDispatcher(defaultURL).forward(request, response);
 		
 	}
 
-	private Guestroom getRoom(int roomNumber, List<Guestroom> rooms)
-	{
-		if (rooms != null && !rooms.isEmpty())
-			for(Guestroom r : rooms)
-				if (r.getNumber() == roomNumber)
-					return r;
 
-		return new Guestroom();
-	}
 	
 }
