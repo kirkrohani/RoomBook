@@ -1,11 +1,9 @@
 package roombook.reservations;
 
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-
 import roombook.guests.Guest;
 import roombook.rooms.Guestroom;
+import roombook.rooms.IRoom;
 
 public class ReservationServices implements IReservationServices 
 {
@@ -22,23 +20,20 @@ public class ReservationServices implements IReservationServices
 	}
 
 	@Override
-	public IReservation getReservationData(HttpServletRequest request)
+	public Guest createGuest(String fname, String lname, String email, String phone, String notes)
 	{
-		System.out.println("Getting data from user input to make a reservation");
-		String checkInDate = request.getParameter("checkinDate");
-		String checkoutDate = request.getParameter("checkoutDate");
-		int numOfAdults = Integer.parseInt(request.getParameter("numberOfAdults"));
-		int numOfChildren = Integer.parseInt(request.getParameter("numberOfChildren"));
-		int totalGuests = numOfAdults + numOfChildren;
+		return new Guest(fname, lname, email, phone, notes);
+	}
+	
+	@Override
+	public IReservation createReservation(Guest guest, IRoom room, String checkin, String checkout, String numAdults, String numChildren)
+	{
+		//Default number of guests must be 1
+		int totalGuests = 1;
+		if (numAdults != null && !numAdults.isEmpty() && numChildren != null && !numChildren.isEmpty())
+			totalGuests = Integer.parseInt(numAdults) + Integer.parseInt(numChildren) ;
 		
-		Guest guest = new Guest(request.getParameter("firstName"), 
-								request.getParameter("lastName"), 
-								request.getParameter("email"), 
-								request.getParameter("phone"),
-								request.getParameter("notes"));
-		
-		return new RoomReservation(guest, checkInDate, checkoutDate, totalGuests, 59.99); 
-		
+		return  new RoomReservation(guest, room, checkin, checkout, totalGuests);
 	}
 
 }

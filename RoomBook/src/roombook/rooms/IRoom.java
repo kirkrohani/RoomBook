@@ -1,6 +1,6 @@
 package roombook.rooms;
 
-public interface Room
+public interface IRoom
 {
 
 	public abstract int getNumber();

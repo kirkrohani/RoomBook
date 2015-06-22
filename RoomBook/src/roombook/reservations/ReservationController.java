@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import java.util.List;
 
+import roombook.guests.Guest;
 import roombook.rooms.*;
 
 /**
@@ -46,7 +47,25 @@ public class ReservationController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		IReservation r = reservationServices.getReservationData(request);
+		
+		// Get user data from reservation
+		System.out.println("Getting data from user input to make a reservation");
+		String checkInDate = request.getParameter("checkinDate");
+		String checkoutDate = request.getParameter("checkoutDate");
+		String firstName = request.getParameter("firstName");
+		String lastName = request.getParameter("lastName");
+		String email = request.getParameter("email");
+		String phone = request.getParameter("phone");
+		String notes = request.getParameter("notes");
+		String numOfAdults = request.getParameter("numberOfAdults");
+		String numOfChildren = request.getParameter("numberOfChildren");
+		
+		//Create the guest profile
+		Guest guest = reservationServices.createGuest(firstName, lastName, email, phone, notes);
+		IRoom room = (IRoom) request.getSession().getAttribute("selectedRoom");
+		IReservation r = reservationServices.createReservation(guest, room, checkInDate, checkoutDate, numOfAdults, numOfChildren); 
+		
+		
 		System.out.println("reservation data: " + r);
 		
 		String defaultURL = "/ConfirmReservation.jsp";

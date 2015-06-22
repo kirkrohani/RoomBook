@@ -7,27 +7,28 @@ import roombook.rooms.*;
 
 public class Hotel 
 {
-	 private List<Room> guestRooms;
+	 private List<IRoom> guestRooms;
 	 /*
 	  * REMOVE MAXROOMNUMBER WHEN YOU ADD A DATABASE
 	  */
 	 private int maxRoomNumber;
+	 public static double DEFAULT_BASE_PRICE = 49.99;
 	 
 	 public Hotel() 
 	 {
-		guestRooms = new ArrayList<Room>();
+		guestRooms = new ArrayList<IRoom>();
 		maxRoomNumber = 0;
 	 }
 
-	 public List<Room> getGuestRooms()
+	 public List<IRoom> getGuestRooms()
 	 {
 		 return guestRooms;
 	 }
 	 
-	 public void addRoom(Room room)
+	 public void addRoom(IRoom room)
 	 {
 		 boolean roomAlreadyAdded = false;
-		 for (Room r : guestRooms)
+		 for (IRoom r : guestRooms)
 			 if (r.getNumber() == room.getNumber())
 				 roomAlreadyAdded = true;
 		 

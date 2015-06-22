@@ -4,23 +4,27 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import roombook.guests.Guest;
+import roombook.rooms.IRoom;
 
 public class RoomReservation implements IReservation 
 {
 	private Guest primaryGuest;
+	private IRoom guestRoom;
 	private LocalDate checkinDate;
 	private LocalDate checkoutDate;
 	private int numberOfGuests;
 	private double pricePerNight;
 	private int numberOfNights;
 	
-	public RoomReservation(Guest guest, String in, String out, int guests, double price) 
+	public RoomReservation(Guest guest, IRoom room, String in, String out, int totalNumGuests) 
 	{
 		this.primaryGuest = guest;
+		this.guestRoom = room;
 		this.checkinDate = LocalDate.parse(in, DateTimeFormatter.ofPattern("MM-dd-yyyy"));
 		this.checkoutDate = LocalDate.parse(out, DateTimeFormatter.ofPattern("MM-dd-yyyy"));
-		this.numberOfGuests = guests;
-		this.pricePerNight = price;
+		this.numberOfNights = this.checkinDate.until(this.checkoutDate).getDays();
+		this.numberOfGuests = totalNumGuests;
+		this.pricePerNight = room.getPrice();
 	}
 
 	@Override
@@ -31,6 +35,16 @@ public class RoomReservation implements IReservation
 	@Override
 	public void setGuest(Guest guest) {
 		this.primaryGuest = guest;
+	}
+	
+	@Override
+	public IRoom getGuestRoom() {
+		return guestRoom;
+	}
+
+	@Override
+	public void setGuestRoom(IRoom guestRoom) {
+		this.guestRoom = guestRoom;
 	}
 
 	@Override
@@ -88,10 +102,11 @@ public class RoomReservation implements IReservation
 	public String toString() 
 	{
 		// TODO Auto-generated method stub
-		return "Reseration for " + this.primaryGuest + " from " 
-				+ this.numberOfGuests + " guests " + " for " 
-				+ this.numberOfNights + " nights " + " checking in on " + this.checkinDate
-				+ " and checking out on " + this.checkoutDate;
+		return "Reservation for " + this.primaryGuest + " w/" 
+				+ this.numberOfGuests + " people " + " staying for " 
+				+ this.numberOfNights + " nights " + " in room-"
+				+ this.guestRoom + " CHECK IN on " + this.checkinDate
+				+ " and CHECK OUT on " + this.checkoutDate;
 	}
 	
 	

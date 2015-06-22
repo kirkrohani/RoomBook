@@ -2,17 +2,17 @@ package roombook.rooms;
 
 
 import roombook.core.*;
+
 import java.io.Serializable;
+
 import javax.persistence.*;
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name="Rooms")
-public class Guestroom implements Room, Serializable
+public class Guestroom implements IRoom, Serializable
 {
-	/**
-	 * 
-	 */
+
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -71,7 +71,7 @@ public class Guestroom implements Room, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see roombook.rooms.Room#setSize(int)
+	 * @see roombook.rooms.IRoom#setSize(int)
 	 */
 	@Override
 	public void setSize(int size) {
@@ -79,7 +79,7 @@ public class Guestroom implements Room, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see roombook.rooms.Room#isOccupied()
+	 * @see roombook.rooms.IRoom#isOccupied()
 	 */
 	@Override
 	public boolean isOccupied() {
@@ -87,7 +87,7 @@ public class Guestroom implements Room, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see roombook.rooms.Room#setOccupied(boolean)
+	 * @see roombook.rooms.IRoom#setOccupied(boolean)
 	 */
 	@Override
 	public void setOccupied(boolean occupied) {
@@ -137,5 +137,12 @@ public class Guestroom implements Room, Serializable
 	public void setRoomStatus(RoomStatus rs)
 	{
 		this.roomStatus = rs;
+	}
+	
+	@Override
+	public String toString() 
+	{
+		return "Room # " + this.number + " is a " + this.bedType 
+				+ this.type + " with " + this.numberOfBeds + " beds";
 	}
 }

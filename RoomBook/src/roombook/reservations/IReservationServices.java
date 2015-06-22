@@ -2,14 +2,15 @@ package roombook.reservations;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
+import roombook.guests.Guest;
 import roombook.rooms.Guestroom;
+import roombook.rooms.IRoom;
 
 public interface IReservationServices 
 {
 	
 	Guestroom getRoom(int roomNumber, List<Guestroom> rooms);
-	IReservation getReservationData(HttpServletRequest request);
+	Guest createGuest(String fname, String lname, String email, String phone, String notes);
+	IReservation createReservation(Guest guest, IRoom room, String in, String out, String numAdults, String numChildren);
 
 }

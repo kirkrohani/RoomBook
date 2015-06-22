@@ -5,8 +5,6 @@ import roombook.rooms.BedType;
 public class BusinessLogic 
 {
 	
-	
-
 
 	public static int getNumberOfBeds(BedType bt)
 	{

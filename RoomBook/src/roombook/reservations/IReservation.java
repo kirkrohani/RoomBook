@@ -1,7 +1,9 @@
 package roombook.reservations;
 
 import java.time.LocalDate;
+
 import roombook.guests.Guest;
+import roombook.rooms.IRoom;
 
 public interface IReservation 
 {
@@ -17,4 +19,7 @@ public interface IReservation
 	void setPricePerNight(double pricePerNight);
 	int getNumberOfNights();
 	void setNumberOfNights(int numberOfNights);
+	IRoom getGuestRoom();
+	void setGuestRoom(IRoom guestRoom);
+	
 }
