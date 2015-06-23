@@ -13,10 +13,11 @@ import javax.persistence.*;
 public class Guestroom implements IRoom, Serializable
 {
 
+	// *** NEED TO NOT MAKE roomNumber auto-generated!
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int number;
+	private int roomNumber;
+	
 	private int numberOfBeds;
 	private String description;
 	private int size;
@@ -36,14 +37,14 @@ public class Guestroom implements IRoom, Serializable
 
 
 	@Override
-	public int getNumber() 
+	public int getRoomNumber() 
 	{
-		return number;
+		return roomNumber;
 	}
 
 	@Override
-	public void setNumber(int number) {
-		this.number = number;
+	public void setRoomNumber(int number) {
+		this.roomNumber = number;
 	}
 
 	public int getNumberOfBeds() {
@@ -142,7 +143,7 @@ public class Guestroom implements IRoom, Serializable
 	@Override
 	public String toString() 
 	{
-		return "Room # " + this.number + " is a " + this.bedType 
+		return "Room # " + this.roomNumber + " is a " + this.bedType 
 				+ this.type + " with " + this.numberOfBeds + " beds";
 	}
 }

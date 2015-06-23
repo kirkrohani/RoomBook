@@ -124,8 +124,8 @@
 												
 											</div>
 											<div class="col-md-10 col-sm-9">
-												<h3 class="blog-title text-dark-blue font-300"><tl:out value="${selectedRoom.type}"/> <tl:out value="${selectedRoom.bedType}"/> Room # <tl:out value="${selectedRoom.number}"/> (<span class="text-orange">$<tl:out value="${selectedRoom.price}" />/night</span>)</h3>
-												<input type="hidden" name="roomNumber" value="${selectedRoom.number}" />												
+												<h3 class="blog-title text-dark-blue font-300"><tl:out value="${selectedRoom.type}"/> <tl:out value="${selectedRoom.bedType}"/> Room # <tl:out value="${selectedRoom.roomNumber}"/> (<span class="text-orange">$<tl:out value="${selectedRoom.price}" />/night</span>)</h3>
+												<input type="hidden" name="roomNumber" value="${selectedRoom.roomNumber}" />												
 												<ol class="inline-list tag-list font-small">
 													<li>
 														<a href="#" class="button-sm green text-white hover-green hover-text-white">SPA</a>
@@ -148,12 +148,12 @@
 														<div class="col-md-2">
 															<p class="row no-padding">Check In Date</p>
 															<i class="icon-233"></i>
-															<input type="text" name="checkinDate" id="check-in" placeholder="Check in" value="05-05-2015">
+															<input type="text" name="checkinDate" id="check-in" placeholder="Check in" value="06-19-2015">
 														</div>
 														<div class="col-md-2">
 															<p class="row no-padding">Check Out Date</p>
 															<i class="icon-233"></i>
-															<input type="text" name="checkoutDate" id="check-out" placeholder="Check out" value="05-06-2015">
+															<input type="text" name="checkoutDate" id="check-out" placeholder="Check out" value="06-20-2015">
 														</div>
 														<div class="col-md-2">
 															<p class="row no-padding">Number of Adults</p>

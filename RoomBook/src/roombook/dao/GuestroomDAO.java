@@ -8,6 +8,11 @@ import java.util.List;
 
 public class GuestroomDAO 
 {
+	
+	//**** REFACTOR AND CHANGE NAME TO BE ROOMSDAO
+	
+	
+	
 	public List<Guestroom> getAllRooms()
 	{
 		EntityManager em = DatabaseUtils.getEMFactory().createEntityManager();

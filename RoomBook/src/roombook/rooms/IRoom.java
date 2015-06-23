@@ -3,9 +3,9 @@ package roombook.rooms;
 public interface IRoom
 {
 
-	public abstract int getNumber();
+	public abstract int getRoomNumber();
 
-	public abstract void setNumber(int number);
+	public abstract void setRoomNumber(int number);
 
 	public abstract String getDescription();
 

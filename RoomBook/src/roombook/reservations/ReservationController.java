@@ -62,11 +62,13 @@ public class ReservationController extends HttpServlet {
 		
 		//Create the guest profile
 		Guest guest = reservationServices.createGuest(firstName, lastName, email, phone, notes);
-		IRoom room = (IRoom) request.getSession().getAttribute("selectedRoom");
-		IReservation r = reservationServices.createReservation(guest, room, checkInDate, checkoutDate, numOfAdults, numOfChildren); 
+		if (guest != null)
+		{
+			IRoom room = (IRoom) request.getSession().getAttribute("selectedRoom");
+			Reservation r = reservationServices.createReservation(checkInDate, checkoutDate, numOfAdults, numOfChildren); 
+			System.out.println("reservation data: " + r);
+		}
 		
-		
-		System.out.println("reservation data: " + r);
 		
 		String defaultURL = "/ConfirmReservation.jsp";
 		getServletContext().getRequestDispatcher(defaultURL).forward(request, response);

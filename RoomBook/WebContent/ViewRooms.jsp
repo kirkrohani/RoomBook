@@ -102,7 +102,7 @@
 				<tl:forEach items="${rooms}" var="room" begin="${pagingStart}" end="${pagingEnd}">
 					<li class="col-md-4 col-sm-6">
 						<div class="text-center">
-							<h3 class="text-dark-blue"><a href="room-details.jsp" class="text-dark-blue hover-text-aquablue"> <tl:out value="${room.type}"/> <tl:out value="${room.bedType}" /> <tl:out value="${room.number}"/>   </a></h3>
+							<h3 class="text-dark-blue"><a href="room-details.jsp" class="text-dark-blue hover-text-aquablue"> <tl:out value="${room.type}"/> <tl:out value="${room.bedType}" /> <tl:out value="${room.roomNumber}"/>   </a></h3>
 							<figure>
 								<a href="http://placehold.it/600x600"  title="RoomBook rooms" rel="gallery-1"><img src="img/regular_double.jpeg" alt="portfolio item"></a>
 								<figcaption class="aquablue text-white">
@@ -122,7 +122,7 @@
 								</p>
 								<div class="rooms-footer clearfix">
 									<span class="to-left align-button">Price: <b class="text-aquablue font-13x font-300">${room.price}</b></span>
-									<a href="Reservation?RoomID=<tl:out value="${room.number}"/>" class="button-sm to-right grey text-black hover-orange soft-corners">Book now</a>
+									<a href="Reservation?RoomID=<tl:out value="${room.roomNumber}"/>" class="button-sm to-right grey text-black hover-orange soft-corners">Book now</a>
 								</div>
 							</div>
 						</div>

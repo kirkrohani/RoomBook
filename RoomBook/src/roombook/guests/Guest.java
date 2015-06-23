@@ -2,16 +2,40 @@ package roombook.guests;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name="Guests")
 public class Guest implements Serializable
 {
 
 	private static final long serialVersionUID = 1L;
+	
+	@Id
+	private int guestID;
 	private String firstName;
 	private String lastName;
 	private String email;
 	private String phone;
 	private String notes;
 	
+	public Guest() 
+	{
+	}
+	
+	
+	
+	public int getGuestID() {
+		return guestID;
+	}
+
+	public void setGuestID(int guestID) {
+		this.guestID = guestID;
+	}
+
 	public Guest(String firstName, String lastName) 
 	{
 		this.firstName = firstName;

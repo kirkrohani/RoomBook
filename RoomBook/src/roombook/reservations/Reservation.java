@@ -1,12 +1,11 @@
 package roombook.reservations;
 
-
-
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -18,24 +17,15 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
 import roombook.guests.Guest;
-import roombook.rooms.Guestroom;
 import roombook.rooms.IRoom;
-
 
 @Entity
 @Table(name="Reservations")
-public class RoomReservation implements IReservation 
+public class Reservation 
 {
+	
 	@Id
 	private int reservationID;
-	
-	@OneToOne
-	@JoinColumn(name="guestID")
-	private Guest primaryGuest;
-	
-	@OneToOne
-	@JoinColumn(name="roomNumber")
-	private Guestroom guestRoom;
 	
 	@Temporal(TemporalType.DATE)
 	private Date checkinDate;
@@ -43,20 +33,21 @@ public class RoomReservation implements IReservation
 	@Temporal(TemporalType.DATE)
 	private Date checkoutDate;
 	
+	@OneToOne
+	@JoinColumn(name="guestID")
+	private Guest guest;
+	
 	private int numberOfGuests;
 	private double pricePerNight;
 	private int numberOfNights;
 	
-	public RoomReservation() 
-	{
+
+	public Reservation() {
+		// TODO Auto-generated constructor stub
 	}
 	
-	public RoomReservation(Guest guest, IRoom room, String in, String out, int totalNumGuests) 
+	public Reservation(String in, String out, int totalNumGuests) 
 	{
-		
-		this.primaryGuest = guest;
-		this.guestRoom = (Guestroom) room;
-		
 		DateTimeFormatter format = DateTimeFormat.forPattern("MM-dd-yyyy");
 		LocalDate rawCheckInDate = format.parseLocalDate(in);
 		this.checkinDate = rawCheckInDate.toDate();
@@ -66,91 +57,46 @@ public class RoomReservation implements IReservation
 		
 		this.numberOfNights = Days.daysBetween(rawCheckInDate, rawCheckOutDate).getDays();
 		this.numberOfGuests = totalNumGuests;
-		this.pricePerNight = room.getPrice();
-	}
-
-	/*
-	@Override
-	public Guest getPrimaryGuest() {
-		return primaryGuest;
-	}
-
-	@Override
-	public void setPrimaryGuest(Guest guest) {
-		this.primaryGuest = guest;
+		this.pricePerNight = 59.99;
 	}
 	
-	@Override
-	public IRoom getGuestRoom() {
-		return guestRoom;
+	public int getReservationID() {
+		return reservationID;
 	}
-
-	@Override
-	public void setGuestRoom(IRoom guestRoom) {
-		this.guestRoom = (Guestroom) guestRoom;
+	public void setReservationID(int reservationID) {
+		this.reservationID = reservationID;
 	}
-*/
-	@Override
 	public Date getCheckinDate() {
 		return checkinDate;
 	}
-
-	@Override
 	public void setCheckinDate(Date checkinDate) {
 		this.checkinDate = checkinDate;
 	}
-
-	@Override
 	public Date getCheckoutDate() {
 		return checkoutDate;
 	}
-
-	@Override
 	public void setCheckoutDate(Date checkoutDate) {
 		this.checkoutDate = checkoutDate;
 	}
-
-	@Override
 	public int getNumberOfGuests() {
 		return numberOfGuests;
 	}
-
-	@Override
 	public void setNumberOfGuests(int numberOfGuests) {
 		this.numberOfGuests = numberOfGuests;
 	}
-
-	@Override
 	public double getPricePerNight() {
 		return pricePerNight;
 	}
-
-	@Override
 	public void setPricePerNight(double pricePerNight) {
 		this.pricePerNight = pricePerNight;
 	}
-
-	@Override
 	public int getNumberOfNights() {
 		return numberOfNights;
 	}
-
-	@Override
 	public void setNumberOfNights(int numberOfNights) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	@Override
-	public String toString() 
-	{
-		// TODO Auto-generated method stub
-		return "Reservation for " + this.primaryGuest + " w/" 
-				+ this.numberOfGuests + " people " + " staying for " 
-				+ this.numberOfNights + " nights " + " in room-"
-				+ this.guestRoom + " CHECK IN on " + this.checkinDate
-				+ " and CHECK OUT on " + this.checkoutDate;
+		this.numberOfNights = numberOfNights;
 	}
 	
 	
+
 }

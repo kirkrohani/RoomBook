@@ -23,5 +23,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JPALibs"/>
+	<classpathentry kind="lib" path="/Users/kirkrohani/git/RoomBook/RoomBook/WebContent/WEB-INF/lib/joda-time-2.8.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

@@ -25,23 +25,7 @@ public class Hotel
 		 return guestRooms;
 	 }
 	 
-	 public void addRoom(IRoom room)
-	 {
-		 boolean roomAlreadyAdded = false;
-		 for (IRoom r : guestRooms)
-			 if (r.getNumber() == room.getNumber())
-				 roomAlreadyAdded = true;
-		 
-		 if (!roomAlreadyAdded)
-		 {
-			 //MODIFY CODE WHEN A DB IS ADDED
-			 maxRoomNumber++;
-			 room.setNumber(maxRoomNumber);
-			 guestRooms.add(room);
-			 
-		 }
-			 
-	 }
+
 	 
 	 public int getNumberOfRooms()
 	 {
