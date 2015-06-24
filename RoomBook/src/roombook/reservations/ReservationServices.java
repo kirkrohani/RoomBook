@@ -48,7 +48,7 @@ public class ReservationServices implements IReservationServices
 	}
 	
 	@Override
-	public Reservation createReservation(String checkin, String checkout, String numAdults, String numChildren)
+	public Reservation createReservation(Guest guest, IRoom room, String checkin, String checkout, String numAdults, String numChildren)
 	{
 		//Default number of guests must be 1
 		int totalGuests = 1;
@@ -56,7 +56,7 @@ public class ReservationServices implements IReservationServices
 			totalGuests = Integer.parseInt(numAdults) + Integer.parseInt(numChildren) ;
 		
 		
-		Reservation reservation = new Reservation(checkin, checkout, totalGuests);
+		Reservation reservation = new Reservation(guest, room, checkin, checkout, totalGuests);
 		
 		try
 		{

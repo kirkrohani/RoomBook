@@ -2,10 +2,11 @@ package roombook.reservations;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -17,36 +18,32 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
 import roombook.guests.Guest;
+import roombook.rooms.Guestroom;
 import roombook.rooms.IRoom;
 
 @Entity
 @Table(name="Reservations")
-public class Reservation 
+public class Reservation implements IReservation
 {
 	
-	@Id
+	
 	private int reservationID;
-	
-	@Temporal(TemporalType.DATE)
 	private Date checkinDate;
-	
-	@Temporal(TemporalType.DATE)
 	private Date checkoutDate;
-	
-	@OneToOne
-	@JoinColumn(name="guestID")
 	private Guest guest;
-	
+	private Guestroom room;
 	private int numberOfGuests;
 	private double pricePerNight;
 	private int numberOfNights;
+	private int roomNumber;
+	private int guestID;
 	
 
 	public Reservation() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Reservation(String in, String out, int totalNumGuests) 
+	public Reservation(Guest guest, IRoom room, String in, String out, int totalNumGuests) 
 	{
 		DateTimeFormatter format = DateTimeFormat.forPattern("MM-dd-yyyy");
 		LocalDate rawCheckInDate = format.parseLocalDate(in);
@@ -57,24 +54,58 @@ public class Reservation
 		
 		this.numberOfNights = Days.daysBetween(rawCheckInDate, rawCheckOutDate).getDays();
 		this.numberOfGuests = totalNumGuests;
-		this.pricePerNight = 59.99;
+		this.pricePerNight = 599.99;
+		this.roomNumber = room.getRoomNumber();
+		this.guestID = guest.getGuestID();
+		
 	}
 	
+	@Id
 	public int getReservationID() {
 		return reservationID;
 	}
+	
 	public void setReservationID(int reservationID) {
 		this.reservationID = reservationID;
 	}
+	
+	@Temporal(TemporalType.DATE)
 	public Date getCheckinDate() {
 		return checkinDate;
 	}
 	public void setCheckinDate(Date checkinDate) {
 		this.checkinDate = checkinDate;
 	}
+	
+	@Temporal(TemporalType.DATE)
 	public Date getCheckoutDate() {
 		return checkoutDate;
 	}
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinTable(name="Guests")
+	@JoinColumn(name="guestID")
+	public Guest getGuest()
+	{
+		return this.guest;
+	}
+	
+	public void setGuest(Guest guest)
+	{
+		this.guest = guest;
+	}
+	
+	@OneToOne(cascade=CascadeType.MERGE)
+	@JoinTable(name="Rooms")
+	@JoinColumn(name="roomNumber")
+	public Guestroom getRoom() {
+		return room;
+	}
+
+	public void setRoom(Guestroom room) {
+		this.room = room;
+	}
+
 	public void setCheckoutDate(Date checkoutDate) {
 		this.checkoutDate = checkoutDate;
 	}
@@ -96,7 +127,22 @@ public class Reservation
 	public void setNumberOfNights(int numberOfNights) {
 		this.numberOfNights = numberOfNights;
 	}
-	
+
+	public int getRoomNumber() {
+		return roomNumber;
+	}
+
+	public void setRoomNumber(int roomNumber) {
+		this.roomNumber = roomNumber;
+	}
+
+	public int getGuestID() {
+		return guestID;
+	}
+
+	public void setGuestID(int guestID) {
+		this.guestID = guestID;
+	}
 	
 
 }

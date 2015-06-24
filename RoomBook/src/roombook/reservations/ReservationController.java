@@ -65,7 +65,7 @@ public class ReservationController extends HttpServlet {
 		if (guest != null)
 		{
 			IRoom room = (IRoom) request.getSession().getAttribute("selectedRoom");
-			Reservation r = reservationServices.createReservation(checkInDate, checkoutDate, numOfAdults, numOfChildren); 
+			Reservation r = reservationServices.createReservation(guest, room, checkInDate, checkoutDate, numOfAdults, numOfChildren); 
 			System.out.println("reservation data: " + r);
 		}
 		

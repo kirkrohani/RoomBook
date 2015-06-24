@@ -11,6 +11,6 @@ public interface IReservationServices
 	
 	Guestroom getRoom(int roomNumber, List<Guestroom> rooms);
 	Guest createGuest(String fname, String lname, String email, String phone, String notes);
-	Reservation createReservation(String in, String out, String numAdults, String numChildren);
+	Reservation createReservation(Guest guest, IRoom room, String in, String out, String numAdults, String numChildren);
 
 }
