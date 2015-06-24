@@ -1,8 +1,8 @@
 package roombook.dao;
 
 
-import roombook.reservations.IReservation;
-import roombook.reservations.Reservation;
+import roombook.reservation.IReservation;
+import roombook.reservation.Reservation;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;

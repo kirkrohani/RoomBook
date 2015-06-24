@@ -1,4 +1,4 @@
-package roombook.guests;
+package roombook.guest;
 
 import java.io.Serializable;
 

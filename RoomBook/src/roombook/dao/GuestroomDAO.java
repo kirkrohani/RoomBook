@@ -1,8 +1,9 @@
 package roombook.dao;
 
-import roombook.rooms.*;
+import roombook.room.*;
 
 import javax.persistence.*;
+
 import java.util.List;
 
 

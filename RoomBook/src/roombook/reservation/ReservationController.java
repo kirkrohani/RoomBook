@@ -1,4 +1,4 @@
-package roombook.reservations;
+package roombook.reservation;
 
 import java.io.IOException;
 
@@ -11,8 +11,8 @@ import javax.servlet.http.HttpSession;
 
 import java.util.List;
 
-import roombook.guests.Guest;
-import roombook.rooms.*;
+import roombook.guest.Guest;
+import roombook.room.*;
 
 /**
  * Servlet implementation class ReservationController

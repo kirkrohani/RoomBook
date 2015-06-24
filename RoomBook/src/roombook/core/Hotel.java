@@ -3,7 +3,7 @@ package roombook.core;
 import java.util.ArrayList;
 import java.util.List;
 
-import roombook.rooms.*;
+import roombook.room.*;
 
 public class Hotel 
 {

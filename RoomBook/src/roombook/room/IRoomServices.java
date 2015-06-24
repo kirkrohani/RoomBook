@@ -1,4 +1,4 @@
-package roombook.rooms;
+package roombook.room;
 
 import java.util.List;
 

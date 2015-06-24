@@ -1,6 +1,6 @@
 package roombook.core;
 
-import roombook.rooms.BedType;
+import roombook.room.BedType;
 
 public class BusinessLogic 
 {

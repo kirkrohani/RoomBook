@@ -1,9 +1,9 @@
-package roombook.reservations;
+package roombook.reservation;
 
 import java.util.Date;
 
-import roombook.guests.Guest;
-import roombook.rooms.IRoom;
+import roombook.guest.Guest;
+import roombook.room.IRoom;
 
 public interface IReservation 
 {

@@ -1,10 +1,10 @@
-package roombook.reservations;
+package roombook.reservation;
 
 import java.util.List;
 
-import roombook.guests.Guest;
-import roombook.rooms.Guestroom;
-import roombook.rooms.IRoom;
+import roombook.guest.Guest;
+import roombook.room.Guestroom;
+import roombook.room.IRoom;
 
 public interface IReservationServices 
 {

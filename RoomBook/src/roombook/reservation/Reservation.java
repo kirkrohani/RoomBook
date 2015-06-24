@@ -1,4 +1,4 @@
-package roombook.reservations;
+package roombook.reservation;
 
 import java.util.Date;
 
@@ -17,9 +17,9 @@ import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
-import roombook.guests.Guest;
-import roombook.rooms.Guestroom;
-import roombook.rooms.IRoom;
+import roombook.guest.Guest;
+import roombook.room.Guestroom;
+import roombook.room.IRoom;
 
 @Entity
 @Table(name="Reservations")

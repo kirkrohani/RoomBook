@@ -1,6 +1,7 @@
 package roombook.dao;
 
-import roombook.guests.Guest;
+import roombook.guest.Guest;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 

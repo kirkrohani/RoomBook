@@ -1,4 +1,4 @@
-package roombook.rooms;
+package roombook.room;
 
 
 import roombook.core.*;
@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
-@SuppressWarnings("serial")
+
 @Entity
 @Table(name="Rooms")
 public class Guestroom implements IRoom, Serializable
@@ -15,6 +15,11 @@ public class Guestroom implements IRoom, Serializable
 
 	// *** NEED TO NOT MAKE roomNumber auto-generated!
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	private int roomNumber;
 	
@@ -72,7 +77,7 @@ public class Guestroom implements IRoom, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see roombook.rooms.IRoom#setSize(int)
+	 * @see roombook.room.IRoom#setSize(int)
 	 */
 	@Override
 	public void setSize(int size) {
@@ -80,7 +85,7 @@ public class Guestroom implements IRoom, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see roombook.rooms.IRoom#isOccupied()
+	 * @see roombook.room.IRoom#isOccupied()
 	 */
 	@Override
 	public boolean isOccupied() {
@@ -88,7 +93,7 @@ public class Guestroom implements IRoom, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see roombook.rooms.IRoom#setOccupied(boolean)
+	 * @see roombook.room.IRoom#setOccupied(boolean)
 	 */
 	@Override
 	public void setOccupied(boolean occupied) {
