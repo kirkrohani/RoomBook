@@ -148,7 +148,7 @@ public class Guestroom implements IRoom, Serializable
 	@Override
 	public String toString() 
 	{
-		return "Room # " + this.roomNumber + " is a " + this.bedType 
+		return "ROOM DATA: " + this.roomNumber + " is a " + this.bedType 
 				+ this.type + " with " + this.numberOfBeds + " beds";
 	}
 }

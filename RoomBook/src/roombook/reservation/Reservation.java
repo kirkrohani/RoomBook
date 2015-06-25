@@ -1,5 +1,6 @@
 package roombook.reservation;
 
+import java.sql.Time;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -18,7 +19,6 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
 import roombook.guest.Guest;
-import roombook.room.Guestroom;
 import roombook.room.IRoom;
 
 @Entity
@@ -31,20 +31,26 @@ public class Reservation implements IReservation
 	private Date checkinDate;
 	private Date checkoutDate;
 	private Guest guest;
-	private Guestroom room;
 	private int numberOfGuests;
+	private int roomNumber;
 	private double pricePerNight;
 	private int numberOfNights;
-	private int roomNumber;
 	private int guestID;
+	private Time earlyCheckInTime;
+	private boolean lateCheckOutTime;
+	private boolean smokingRequested;
+	private boolean petRoomRequested;
+	private boolean parkingRequested;
 	
 
 	public Reservation() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Reservation(Guest guest, IRoom room, String in, String out, int totalNumGuests) 
+	public Reservation(Guest guest, IRoom room, String in, String out, int totalNumGuests, boolean earlyCheckIn,
+						boolean lateCheckOut, boolean smoking, boolean pets, boolean parking) 
 	{
+		
 		DateTimeFormatter format = DateTimeFormat.forPattern("MM-dd-yyyy");
 		LocalDate rawCheckInDate = format.parseLocalDate(in);
 		this.checkinDate = rawCheckInDate.toDate();
@@ -54,9 +60,14 @@ public class Reservation implements IReservation
 		
 		this.numberOfNights = Days.daysBetween(rawCheckInDate, rawCheckOutDate).getDays();
 		this.numberOfGuests = totalNumGuests;
-		this.pricePerNight = 599.99;
 		this.roomNumber = room.getRoomNumber();
+		this.pricePerNight = room.getPrice();
 		this.guestID = guest.getGuestID();
+		this.earlyCheckInTime = earlyCheckIn;
+		this.lateCheckOutTime = lateCheckOut;
+		this.smokingRequested = smoking;
+		this.petRoomRequested = pets;
+		this.parkingRequested = parking;
 		
 	}
 	
@@ -70,16 +81,25 @@ public class Reservation implements IReservation
 	}
 	
 	@Temporal(TemporalType.DATE)
+	@Override
 	public Date getCheckinDate() {
 		return checkinDate;
 	}
+	
+	@Override
 	public void setCheckinDate(Date checkinDate) {
 		this.checkinDate = checkinDate;
 	}
 	
 	@Temporal(TemporalType.DATE)
+	@Override
 	public Date getCheckoutDate() {
 		return checkoutDate;
+	}
+	
+	@Override
+	public void setCheckoutDate(Date checkoutDate) {
+		this.checkoutDate = checkoutDate;
 	}
 	
 	@OneToOne(cascade=CascadeType.ALL)
@@ -95,45 +115,47 @@ public class Reservation implements IReservation
 		this.guest = guest;
 	}
 	
-	@OneToOne(cascade=CascadeType.MERGE)
-	@JoinTable(name="Rooms")
-	@JoinColumn(name="roomNumber")
-	public Guestroom getRoom() {
-		return room;
-	}
 
-	public void setRoom(Guestroom room) {
-		this.room = room;
-	}
-
-	public void setCheckoutDate(Date checkoutDate) {
-		this.checkoutDate = checkoutDate;
-	}
+	@Override
 	public int getNumberOfGuests() {
 		return numberOfGuests;
 	}
+	
+	@Override
 	public void setNumberOfGuests(int numberOfGuests) {
 		this.numberOfGuests = numberOfGuests;
 	}
-	public double getPricePerNight() {
-		return pricePerNight;
-	}
-	public void setPricePerNight(double pricePerNight) {
-		this.pricePerNight = pricePerNight;
-	}
-	public int getNumberOfNights() {
-		return numberOfNights;
-	}
-	public void setNumberOfNights(int numberOfNights) {
-		this.numberOfNights = numberOfNights;
-	}
-
-	public int getRoomNumber() {
+	
+	@Override
+	public int getRoomNumber() 
+	{
 		return roomNumber;
 	}
 
-	public void setRoomNumber(int roomNumber) {
+	@Override
+	public void setRoomNumber(int roomNumber) 
+	{
 		this.roomNumber = roomNumber;
+	}
+
+	@Override
+	public double getPricePerNight() {
+		return pricePerNight;
+	}
+	
+	@Override
+	public void setPricePerNight(double pricePerNight) {
+		this.pricePerNight = pricePerNight;
+	}
+	
+	@Override
+	public int getNumberOfNights() {
+		return numberOfNights;
+	}
+	
+	@Override
+	public void setNumberOfNights(int numberOfNights) {
+		this.numberOfNights = numberOfNights;
 	}
 
 	public int getGuestID() {
@@ -143,6 +165,64 @@ public class Reservation implements IReservation
 	public void setGuestID(int guestID) {
 		this.guestID = guestID;
 	}
-	
 
+	public boolean getEarlyCheckInTime() {
+		return earlyCheckInTime;
+	}
+
+	public void setEarlyCheckInTime(boolean earlyCheckIn) {
+		this.earlyCheckInTime = earlyCheckIn;
+	}
+
+	public boolean getLateCheckOutTime() {
+		return lateCheckOutTime;
+	}
+
+	public void setLateCheckOutTime(boolean lateCheckOut) {
+		this.lateCheckOutTime = lateCheckOut;
+	}
+
+	public boolean isSmokingRequested() {
+		return smokingRequested;
+	}
+
+	public void setSmokingRequested(boolean smoking) {
+		this.smokingRequested = smoking;
+	}
+
+	public boolean isPetRoomRequested() {
+		return petRoomRequested;
+	}
+
+	public void setPetRoomRequested(boolean pets) {
+		this.petRoomRequested = pets;
+	}
+
+	public boolean isParkingRequested() {
+		return parkingRequested;
+	}
+
+	public void setParkingRequested(boolean parking) {
+		this.parkingRequested = parking;
+	}
+	
+	@Override
+	public String toString() 
+	{
+		return 	" reservationID: " + reservationID
+				+ " \n checkinDate: " + checkinDate
+				+ " \n checkoutDate: " + checkoutDate
+				+ " \n guest: " + guestID
+				+ " \n room: " + this.roomNumber
+				+ " \n numberOfGuests: " + numberOfGuests
+				+ " \n pricePerNight: " + pricePerNight
+				+ " \n numberOfNights: " + numberOfNights
+				+ " \n earlyCheckInTime: " + earlyCheckInTime
+				+ " \n lateCheckOutTime: " + lateCheckOutTime
+				+ " \n smokingRequested: " + smokingRequested
+				+ " \n petRoomRequested: " + petRoomRequested
+				+ " \n parkingRequested: " + parkingRequested;
+	}
+
+	
 }

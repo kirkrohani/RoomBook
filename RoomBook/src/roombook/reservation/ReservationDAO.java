@@ -1,16 +1,15 @@
-package roombook.dao;
+package roombook.reservation;
 
 
-import roombook.reservation.IReservation;
-import roombook.reservation.Reservation;
+import roombook.dao.DatabaseUtils;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
 
-public class ReservationsDAO 
+public class ReservationDAO 
 {
-	public void insertReservation(Reservation reservation) throws Exception 
+	public void insertReservation(IReservation reservation) throws Exception 
 	{
 		EntityManager entityManager= DatabaseUtils.getEMFactory().createEntityManager();
 		EntityTransaction transaction = entityManager.getTransaction();

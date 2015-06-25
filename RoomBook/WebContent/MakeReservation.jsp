@@ -241,54 +241,69 @@
 											<textarea name="notes" cols="30" rows="10" placeholder="Notes and special requests"></textarea>
 										</p>
 								</div>
-
 								<div class="col-md-6">
 									<div class="row">
 										<div class="col-md-6">
-											<p><input type="text" placeholder="Early Check In"></p>
+											<i class="icon-201"></i>
+											<input type="text" name="earlyCheckIn" class="room-select" placeholder="Early Check In" >
+											<ul class="clean-list font-small">
+												<li>8:00 a.m.</li>
+												<li>9:00 a.m.</li>
+												<li>10:00 a.m.</li>
+												<li>11:00 a.m.</li>
+												<li>12:00 p.m.</li>
+												<li>1:00 p.m.</li>
+												<li value="No">Regular Check In</li>
+											</ul>
 										</div>
 										<div class="col-md-6">
-											<p><input type="text" placeholder="Late Check In"></p>
+											<i class="icon-201"></i>
+											<input type="text" name="lateCheckOut" class="room-select" placeholder="Late Check Out" >
+											  <ul class="clean-list font-small">
+												<li>3:00 p.m.</li>
+												<li>4:00 a.m.</li>
+												<li>5:00 a.m.</li>
+												<li>6:00 a.m.</li>
+												<li>7:00 p.m.</li>
+												<li>8:00 p.m.</li>
+												<li>9:00 p.m.</li>
+												<li>10:00 p.m.</li>
+												<li>11:00 p.m.</li>
+												<li value="No">Regular Check Out</li>
+											</ul>
 										</div>
 									</div>
+									<br>
 									<div class="row">
-										<div class="col-md-12">
+										<div class="col-res-radio-button">
 											<p>
 												<label class="check-fancy white round-corners">
 													<b>Yes</b>
-													<input type="checkbox">
+													<input type="checkbox" name="smoking">
 													<span class="round-corners green"></span>
 													<b>No</b>
 												</label>
 												<span>Smoking Room</span>
 											</p>
 										</div>
-										<div class="col-md-12">
-											<i class="icon-201"></i>
-											<input type="text" readonly class="room-select" placeholder="Bed Choices">
-											<ul class="clean-list font-small">
-												<li>Double Bed</li>
-												<li>Twin Bed</li>
-											</ul>
-										</div>
 										<br>
-										<div class="col-md-12">
+										<div class="col-res-radio-button">
 											<p>
 												<label class="check-fancy white round-corners">
 													<b>Yes</b>
-													<input type="checkbox">
-													<span class="round-corners grey"></span>
+													<input name="pets" type="checkbox">
+													<span class="round-corners green"></span>
 													<b>No</b>
 												</label>
 												<span>Travel with pets</span>
 											</p>
 										</div>
-										<div class="col-md-12">
+										<div class="col-res-radio-button">
 											<p>
 												<label class="check-fancy white round-corners">
 													<b>Yes</b>
-													<input type="checkbox">
-													<span class="round-corners grey"></span>
+													<input name="parking" type="checkbox">
+													<span class="round-corners green"></span>
 													<b>No</b>
 												</label>
 												<span>Need parking</span>
@@ -385,43 +400,8 @@
 									</p>
 								</div>
 							</div>
-							
 						</li>
-						<li>
-							<div class="row">
-								<div class="col-md-4">
-									<table>
-										<tbody>
-											<tr>
-												<td>Room:</td>
-												<td class="text-right">30 night x <span class="text-orange">49$</span></td>
-											</tr>
-											<tr>
-												<td>Additinal fee:</td>
-												<td class="text-right text-orange">119$</td>
-											</tr>
-											<tr>
-												<td class="uppercase font-500 text-green">Grand-total:</td>
-												<td class="text-right text-orange">1589$ <span class="text-green">(Paid)</span></td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-								<div class="col-md-8">
-									<div class="alert-box green">
-										<h4 class="text-white">Your reservation was succefull submited!</h4>
-									</div>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi dicta commodi officia unde esse enim repellat ipsa quae omnis error numquam!
-									</p>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-12">
-									<a href="#" class="button-md grey text-dark hover-orange" data-target="prev">About Hotelia</a>
-								</div>
-							</div>
-						</li>
+						<li></li>
 					</ul>
 				</div>
 			</div> <!-- /.container -->

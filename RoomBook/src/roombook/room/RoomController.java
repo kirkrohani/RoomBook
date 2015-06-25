@@ -59,12 +59,8 @@ public class RoomController extends HttpServlet
 		{
 			List<String> roomtypes = roomServices.getAllRoomTypes();
 			if (roomtypes != null && !roomtypes.isEmpty())
-			{
 				session.setAttribute("roomtypes", roomtypes);
-				
-					System.out.println("ROOMTYPE: " + roomtypes.size());
-					System.out.println( " HUH: " + roomtypes);
-			}
+
 				
 		}
 		

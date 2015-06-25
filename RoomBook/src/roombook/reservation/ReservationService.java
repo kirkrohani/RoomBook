@@ -3,20 +3,19 @@ package roombook.reservation;
 import java.util.List;
 
 import roombook.dao.GuestsDAO;
-import roombook.dao.ReservationsDAO;
 import roombook.guest.Guest;
 import roombook.room.Guestroom;
 import roombook.room.IRoom;
 
-public class ReservationServices implements IReservationServices 
+public class ReservationService implements IReservationService 
 {
 	private GuestsDAO guestsData;
-	private ReservationsDAO reservationData;
+	private ReservationDAO reservationData;
 	
-	public ReservationServices() 
+	public ReservationService() 
 	{
 		guestsData = new GuestsDAO();
-		reservationData = new ReservationsDAO();
+		reservationData = new ReservationDAO();
 	}
 
 	@Override
@@ -48,16 +47,38 @@ public class ReservationServices implements IReservationServices
 	}
 	
 	@Override
-	public Reservation createReservation(Guest guest, IRoom room, String checkin, String checkout, String numAdults, String numChildren)
+	public IReservation createReservation(Guest guest, IRoom room, String in, String out, String numAdults, String numChildren,
+					String earlyCheckIn,String lateCheckOut, String smoking, String pets, String parking)
 	{
 		//Default number of guests must be 1
 		int totalGuests = 1;
 		if (numAdults != null && !numAdults.isEmpty() && numChildren != null && !numChildren.isEmpty())
 			totalGuests = Integer.parseInt(numAdults) + Integer.parseInt(numChildren) ;
 		
+	
+		boolean earlyCheckInTime = false;
+		if (earlyCheckIn != null && !earlyCheckIn.isEmpty())
+			earlyCheckInTime = true;
 		
-		Reservation reservation = new Reservation(guest, room, checkin, checkout, totalGuests);
+		boolean lateCheckOutTime = false;
+		if (lateCheckOut != null && !lateCheckOut.isEmpty())
+			lateCheckOutTime = true;
 		
+	
+		boolean smokingRequested = false;
+		if (smoking != null && !smoking.isEmpty())
+			smokingRequested = true;
+		
+		boolean petRoomRequested = false;
+		if (pets != null && !pets.isEmpty())
+			petRoomRequested = true;
+		
+		boolean parkingRequested = false;
+		if (parking != null && !parking.isEmpty())
+			parkingRequested = true;
+		
+		IReservation reservation = new Reservation(guest, room, in, out, totalGuests,earlyCheckInTime, lateCheckOutTime, smokingRequested, petRoomRequested, parkingRequested);
+	
 		try
 		{
 			reservationData.insertReservation(reservation);

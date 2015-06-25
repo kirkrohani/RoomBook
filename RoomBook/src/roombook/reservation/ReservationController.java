@@ -20,7 +20,7 @@ import roombook.room.*;
 @WebServlet(name="/ReservationController", urlPatterns="/Reservation")
 public class ReservationController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private ReservationServices reservationServices = new ReservationServices();
+	private ReservationService reservationServices = new ReservationService();
        
 
 
@@ -59,14 +59,26 @@ public class ReservationController extends HttpServlet {
 		String notes = request.getParameter("notes");
 		String numOfAdults = request.getParameter("numberOfAdults");
 		String numOfChildren = request.getParameter("numberOfChildren");
+		String earlyCheckIn = request.getParameter("earlyCheckIn");
+		String lateCheckOut = request.getParameter("lateCheckOut");
+		String smoking = request.getParameter("smoking");
+		String pets = request.getParameter("pets");
+		String parking = request.getParameter("parking");
+		
+		
 		
 		//Create the guest profile
 		Guest guest = reservationServices.createGuest(firstName, lastName, email, phone, notes);
 		if (guest != null)
 		{
 			IRoom room = (IRoom) request.getSession().getAttribute("selectedRoom");
-			Reservation r = reservationServices.createReservation(guest, room, checkInDate, checkoutDate, numOfAdults, numOfChildren); 
-			System.out.println("reservation data: " + r);
+			
+			IReservation r = reservationServices.createReservation(guest, room, checkInDate, 
+																	checkoutDate, numOfAdults,
+																	numOfChildren, earlyCheckIn, 
+																	lateCheckOut, smoking, pets,
+																	parking); 
+			
 		}
 		
 		
