@@ -30,7 +30,7 @@ public class Guest implements Serializable
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "roomNumber")
+    @Column(name = "guestID")
 	public int getGuestID() {
 		return guestID;
 	}
