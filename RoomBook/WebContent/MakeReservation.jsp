@@ -261,9 +261,9 @@
 											<input type="text" name="lateCheckOut" class="room-select" placeholder="Late Check Out" >
 											  <ul class="clean-list font-small">
 												<li>3:00 p.m.</li>
-												<li>4:00 a.m.</li>
-												<li>5:00 a.m.</li>
-												<li>6:00 a.m.</li>
+												<li>4:00 p.m.</li>
+												<li>5:00 p.m.</li>
+												<li>6:00 p.m.</li>
 												<li>7:00 p.m.</li>
 												<li>8:00 p.m.</li>
 												<li>9:00 p.m.</li>

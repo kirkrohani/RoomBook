@@ -1,6 +1,5 @@
 package roombook.reservation;
 
-import java.sql.Time;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -36,7 +35,7 @@ public class Reservation implements IReservation
 	private double pricePerNight;
 	private int numberOfNights;
 	private int guestID;
-	private Time earlyCheckInTime;
+	private boolean earlyCheckInTime;
 	private boolean lateCheckOutTime;
 	private boolean smokingRequested;
 	private boolean petRoomRequested;
